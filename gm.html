@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Government Polytechnic Nainital - Digital Brochure</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== BASE STYLES ===== */
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Poppins',sans-serif;background:#f5f7fa;overflow-x:hidden;line-height:1.6}
+
+    /* ===== COLLEGE COLORS ===== */
+    :root{
+        --primary-color:#1a237e;
+        --secondary-color:#800000;
+        --accent-color:#ffd700;
+        --dark-text:#1a1a2e;
+        --light-text:#666;
+        --white:#ffffff;
+        --light-bg:#f5f7fa;
+    }
+
+    /* ===== TOPBAR ===== */
+    .topbar{background:linear-gradient(90deg,#1a237e,#283593);color:#fff;padding:8px 0;font-size:14px}
+    .topbar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+    .topbar-left{display:flex;align-items:center;gap:20px}
+    .topbar-left i{margin-right:8px;color:#ffd700}
+    .topbar-right{display:flex;align-items:center;gap:15px}
+    .topbar-right a{color:#fff;text-decoration:none;font-size:13px;transition:0.3s}
+    .topbar-right a:hover{color:#ffd700}
+
+    /* ===== HEADER ===== */
+    .header-area{background:#fff;box-shadow:0 2px 15px rgba(0,0,0,0.1);padding:18px 0;position:sticky;top:0;z-index:1000}
+    .logo-section{display:flex;align-items:center;gap:12px}
+    .logo-box{background:transparent;padding:0}
+    .logo-box img{width:90px;height:auto;display:block}
+    .logo-text h4{margin:0;color:var(--primary-color);font-weight:700;font-size:15px;line-height:1.2;white-space:nowrap}
+    .logo-text span{color:var(--secondary-color);font-size:12px;font-weight:600;white-space:nowrap}
+
+    /* ===== NAVIGATION ===== */
+    .main-nav{display:flex;align-items:center;gap:2px;flex-wrap:nowrap;justify-content:flex-end}
+    .main-nav a{color:var(--dark-text);text-decoration:none;font-weight:600;font-size:13px;padding:8px 12px;border-radius:5px;transition:all 0.3s;white-space:nowrap}
+    .main-nav a:hover{background:var(--primary-color);color:#fff}
+    .main-nav a.active{background:var(--primary-color);color:#fff}
+    .main-nav a.highlight{background:var(--secondary-color);color:#fff}
+
+    /* ===== MARQUEE SECTION ===== */
+    .marquee-section{background:linear-gradient(90deg,var(--secondary-color),#9c1a1a,var(--secondary-color));padding:12px 0;overflow:hidden}
+    .marquee-container{overflow:hidden;white-space:nowrap}
+    .marquee-content{display:inline-block;animation:marquee 20s linear infinite}
+    .marquee-content span{margin-right:60px;font-size:16px;font-weight:600;color:#fff;display:inline-flex;align-items:center;gap:10px}
+    .marquee-content span i{color:var(--accent-color)}
+    @keyframes marquee{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero-section{
+      background: linear-gradient(135deg, rgba(0, 64, 128, 0.9), rgba(0, 34, 68, 0.95)), 
+                  url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      padding: 150px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(255, 193, 7, 0.1), transparent 60%);
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .btn-apply {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 10px 25px;
+      border-radius: 25px;
+      font-weight: 600;
+      border: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn-apply:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 64, 128, 0.3);
+      color: white;
+    }
+
+    /* ===== SECTION STYLING ===== */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .section-title p {
+      color: var(--text-light);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--accent-color);
+      margin: 20px auto 0;
+      border-radius: 2px;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about-section {
+      background: white;
+    }
+
+    .about-img {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .about-img img {
+      width: 100%;
+      height: auto;
+      transition: transform 0.5s;
+    }
+
+    .about-img:hover img {
+      transform: scale(1.05);
+    }
+
+    .stat-box {
+      text-align: center;
+      padding: 30px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+      height: 100%;
+    }
+
+    .stat-box:hover {
+      transform: translateY(-10px);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    /* ===== COURSES SECTION ===== */
+    .courses-section {
+      background: var(--bg-light);
+    }
+
+    .course-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: all 0.3s;
+      height: 100%;
+      border: none;
+    }
+
+    .course-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    .course-icon {
+      height: 150px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+    }
+
+    .course-body {
+      padding: 25px;
+    }
+
+    .course-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .course-desc {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .course-link {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: gap 0.3s;
+    }
+
+    .course-link:hover {
+      gap: 10px;
+    }
+
+    /* ===== DEPARTMENT FILTERS ===== */
+    .dept-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .dept-btn {
+      padding: 10px 20px;
+      border: 2px solid var(--primary-color);
+      background: white;
+      color: var(--primary-color);
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .dept-btn:hover, .dept-btn.active {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* ===== FACULTY SECTION ===== */
+    .faculty-section {
+      background: white;
+    }
+
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .filter-btn {
+      padding: 10px 20px;
+      border: 2px solid var(--primary-color);
+      background: white;
+      color: var(--primary-color);
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .faculty-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: all 0.3s;
+      cursor: pointer;
+      height: 100%;
+      border: 1px solid #eee;
+    }
+
+    .faculty-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    .faculty-img {
+      height: 200px;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 4rem;
+    }
+
+    .faculty-info {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .faculty-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 5px;
+    }
+
+    .faculty-role {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 10px;
+    }
+
+    .faculty-dept {
+      font-size: 0.85rem;
+      background: #e7f1ff;
+      color: var(--primary-color);
+      padding: 5px 12px;
+      border-radius: 15px;
+      display: inline-block;
+    }
+
+    /* ===== CONTACT SECTION ===== */
+    .contact-section {
+      background: var(--bg-light);
+    }
+
+    .contact-card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .contact-info-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(0, 64, 128, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-color);
+      font-size: 1.2rem;
+    }
+
+    .form-control {
+      padding: 12px 15px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      margin-bottom: 20px;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(0, 64, 128, 0.1);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer-main {
+        background: linear-gradient(135deg, #0d1b2a 0%, #1a237e 50%, #0d1b2a 100%);
+        color: #fff;
+        padding: 60px 0 0;
+                color: #fff;
+        padding: 60px 0 0;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1.5fr;
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .footer-about h3 {
+        color: var(--accent-color);
+        margin-bottom: 20px;
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+    .footer-about p {
+        line-height: 1.8;
+        opacity: 0.9;
+        font-size: 14px;
+        color: #ccc;
+    }
+
+    .footer-social {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .footer-social a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        font-size: 18px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .footer-social a.facebook:hover {
+        background: #1877f2;
+        transform: translateY(-3px);
+    }
+
+    .footer-social a.instagram:hover {
+        background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        transform: translateY(-3px);
+    }
+
+    .footer-social a.twitter:hover {
+        background: #1da1f2;
+        transform: translateY(-3px);
+    }
+
+    .footer-social a.youtube:hover {
+        background: #ff0000;
+        transform: translateY(-3px);
+    }
+
+    .footer-links h4 {
+        color: var(--accent-color);
+        margin-bottom: 20px;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .footer-links ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-links ul li {
+        margin-bottom: 12px;
+    }
+
+    .footer-links ul li a {
+        color: #ccc;
+        text-decoration: none;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .footer-links ul li a:hover {
+        color: var(--accent-color);
+        padding-left: 5px;
+    }
+
+    .contact-info {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .contact-info li {
+        margin-bottom: 15px;
+    }
+
+    .contact-info li a {
+        color: #ccc;
+        text-decoration: none;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 12px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .contact-info li a:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(5px);
+    }
+
+    .contact-info li a i {
+        width: 20px;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .contact-info li a.phone:hover {
+        color: #25D366;
+    }
+
+    .contact-info li a.email:hover {
+        color: #EA4335;
+    }
+
+    .contact-info li a.location:hover {
+        color: #4285F4;
+    }
+
+    .footer-gallery h4 {
+        color: var(--accent-color);
+        margin-bottom: 20px;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    .gallery-grid a {
+        display: block;
+        overflow: hidden;
+        border-radius: 8px;
+        position: relative;
+    }
+
+    .gallery-grid a img {
+        width: 100%;
+        height: 70px;
+        object-fit: cover;
+        transition: all 0.3s ease;
+    }
+
+    .gallery-grid a:hover img {
+        transform: scale(1.1);
+        filter: brightness(1.1);
+    }
+
+    .gallery-grid a::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(26, 35, 126, 0.3);
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .gallery-grid a:hover::after {
+        opacity: 1;
+    }
+
+    .footer-bottom {
+        background: rgba(0, 0, 0, 0.3);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 20px 50px;
+        text-align: center;
+        border-top: 2px solid #ffd700;
+    }
+
+    .footer-bottom p {
+        margin: 0;
+        font-size: 14px;
+        color: #aaa;
+    }
+
+    .footer-bottom p i {
+        color: #ebe4e4;
+        margin: 0 5px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 992px) {
+        .footer-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .footer-gallery {
+            grid-column: 1 / -1;
+        }
+        
+        .footer-about {
+            grid-column: 1 / -1;
+            text-align: center;
+        }
+        
+        .footer-social {
+            justify-content: center;
+        }
+        
+        .footer-links {
+            text-align: center;
+        }
+        
+        .gallery-grid {
+            grid-template-columns: repeat(6, 1fr);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        
+        .footer-main {
+            padding: 40px 0 0;
+        }
+        
+        .gallery-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+        }
+        
+        .topbar .container {
+            flex-direction: column;
+            gap: 8px;
+            text-align: center;
+        }
+        
+        .logo-section {
+            justify-content: center;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .main-nav {
+            justify-content: center;
+            gap: 2px;
+        }
+        
+        .main-nav a {
+            padding: 6px 8px;
+            font-size: 11px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+        }
+        
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .features-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .team-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .gallery-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .logo-box img {
+            width: 60px;
+        }
+        
+        .logo-text h4 {
+            font-size: 13px;
+        }
+        
+        .logo-text span {
+            font-size: 11px;
+        }
+        
+        .marquee-content span {
+            font-size: 14px;
+            margin-right: 40px;
+        }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <i class="fas fa-graduation-cap"></i>
+      <span>Welcome to Government Polytechnic Nainital</span>
+    </div>
+    <div class="topbar-right">
+      <a href="tel:+919411158375"><i class="fas fa-phone"></i> +91 9411158375</a>
+      <a href="mailto:info@gpnainital.ac.in"><i class="fas fa-envelope"></i> info@gpnainital.ac.in</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header-area">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center flex-wrap">
+      <div class="logo-section">
+        <div class="logo-box">
+          <img src="Government_Polytechnic_Nainital_logo.png" alt="College Logo">
+        </div>
+        <div class="logo-text">
+          <h4>Uttarakhand Government Institute Of Polytechnic</h4>
+          <span>Nainital | Established 1956</span>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html" class="active"><i class="fas fa-home"></i> Home</a>
+        <a href="book.html"><i class="fas fa-book"></i> Books</a>
+        <a href="notes.html"><i class="fas fa-sticky-note"></i> Notes</a>
+        <a href="videos.html"><i class="fas fa-video"></i> Videos</a>
+        <a href="audios.html"><i class="fas fa-headphones"></i> Audios</a>
+        <a href="brochure.html" class="highlight"><i class="fas fa-users"></i> Brochure</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- MARQUEE SECTION -->
+<div class="marquee-section">
+  <div class="marquee-container">
+    <div class="marquee-content">
+      <span><i class="fas fa-graduation-cap"></i> Welcome to Government Polytechnic Nainital</span>
+      <span><i class="fas fa-book"></i> Excellence in Technical Education Since 1956</span>
+      <span><i class="fas fa-university"></i> 6 Departments | 75+ Faculty | 100% Placement</span>
+      <span><i class="fas fa-graduation-cap"></i> Welcome to Government Polytechnic Nainital</span>
+      <span><i class="fas fa-book"></i> Excellence in Technical Education Since 1956</span>
+      <span><i class="fas fa-university"></i> 6 Departments | 75+ Faculty | 100% Placement</span>
+    </div>
+  </div>
+</div>
+
+<!-- HERO SECTION -->
+<section id="home" class="hero-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6" data-aos="fade-right">
+        <h1 class="hero-title">Excellence in Technical Education</h1>
+        <p class="hero-subtitle">Government Polytechnic Nainital - Shaping Future Engineers Since 1956</p>
+        <div class="d-flex gap-3">
+          <a href="#courses" class="btn btn-apply btn-lg">Explore Courses</a>
+          <a href="#about" class="btn btn-outline-light btn-lg">Learn More</a>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="College Campus" class="img-fluid rounded-4 shadow-lg">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about" class="about-section">
+  <div class="container">
+    <div class="section-title" data-aos="fade-up">
+      <h2>About Our College</h2>
+      <p>A premier institution committed to providing quality technical education</p>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+        <div class="about-img">
+          <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="College Building">
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <h3 class="mb-4">Our Legacy of Excellence</h3>
+        <p class="mb-4">Government Polytechnic Nainital has been a cradle of excellence, nurturing young minds and shaping future leaders in engineering and technology since 1956.</p>
+        <p class="mb-4">We offer state-of-the-art facilities, experienced faculty, and a curriculum that aligns with industry standards to ensure our students are job-ready.</p>
+        <div class="row mt-4">
+          <div class="col-6 mb-3">
+            <div class="stat-box">
+              <h3 class="stat-number">68+</h3>
+              <p>Years of Excellence</p>
+            </div>
+          </div>
+          <div class="col-6 mb-3">
+            <div class="stat-box">
+              <h3 class="stat-number">6</h3>
+              <p>Departments</p>
+            </div>
+          </div>
+          <div class="col-6 mb-3">
+            <div class="stat-box">
+              <h3 class="stat-number">75+</h3>
+              <p>Faculty Members</p>
+            </div>
+          </div>
+          <div class="col-6 mb-3">
+            <div class="stat-box">
+              <h3 class="stat-number">100%</h3>
+              <p>Placement Support</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES SECTION -->
+<section id="courses" class="courses-section">
+  <div class="container">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Our Courses</h2>
+      <p>Diverse range of diploma programs designed for industry success</p>
+    </div>
+    
+    <!-- Department Filters -->
+    <div class="dept-filter" data-aos="fade-up">
+      <button class="dept-btn active" data-filter="all">All Courses</button>
+      <button class="dept-btn" data-filter="engineering">Engineering</button>
+      <button class="dept-btn" data-filter="pharmacy">Pharmacy</button>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-lg-4 mb-4 course-item" data-aos="fade-up" data-aos-delay="100" data-category="engineering">
+        <div class="course-card">
+          <div class="course-icon">
+            <i class="bi bi-building"></i>
+          </div>
+          <div class="course-body">
+            <h3 class="course-title">Civil Engineering</h3>
+                            <p class="course-desc">Learn construction, structural design, and infrastructure development with hands-on training.</p>
+              <a href="#" class="course-link">Learn More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4 course-item" data-aos="fade-up" data-aos-delay="200" data-category="engineering">
+          <div class="course-card">
+            <div class="course-icon">
+              <i class="bi bi-lightning-charge"></i>
+            </div>
+            <div class="course-body">
+              <h3 class="course-title">Electrical Engineering</h3>
+              <p class="course-desc">Master power systems, electronics, and electrical machinery with modern lab facilities.</p>
+              <a href="#" class="course-link">Learn More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4 course-item" data-aos="fade-up" data-aos-delay="300" data-category="engineering">
+          <div class="course-card">
+            <div class="course-icon">
+              <i class="bi bi-cpu"></i>
+            </div>
+            <div class="course-body">
+              <h3 class="course-title">Electronics & Comm.</h3>
+              <p class="course-desc">Explore VLSI, embedded systems, and communication technologies in our advanced labs.</p>
+              <a href="#" class="course-link">Learn More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4 course-item" data-aos="fade-up" data-aos-delay="400" data-category="engineering">
+          <div class="course-card">
+            <div class="course-icon">
+              <i class="bi bi-laptop"></i>
+            </div>
+            <div class="course-body">
+              <h3 class="course-title">Computer Science</h3>
+              <p class="course-desc">Dive into programming, web development, and software engineering with industry projects.</p>
+              <a href="#" class="course-link">Learn More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4 course-item" data-aos="fade-up" data-aos-delay="500" data-category="engineering">
+          <div class="course-card">
+            <div class="course-icon">
+              <i class="bi bi-gear"></i>
+            </div>
+            <div class="course-body">
+              <h3 class="course-title">Mechanical Engineering</h3>
+              <p class="course-desc">Study thermodynamics, manufacturing processes, and CAD/CAM with practical workshops.</p>
+              <a href="#" class="course-link">Learn More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4 course-item" data-aos="fade-up" data-aos-delay="600" data-category="pharmacy">
+          <div class="course-card">
+            <div class="course-icon">
+              <i class="bi bi-capsule"></i>
+            </div>
+            <div class="course-body">
+              <h3 class="course-title">Pharmacy</h3>
+              <p class="course-desc">Learn pharmaceutical chemistry, drug analysis, and healthcare management.</p>
+              <a href="#" class="course-link">Learn More <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Faculty Section -->
+  <section id="faculty" class="faculty-section">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Our Faculty</h2>
+        <p>Meet our experienced and dedicated teaching staff</p>
+      </div>
+      
+      <!-- Filter Buttons -->
+      <div class="filter-buttons" data-aos="fade-up">
+        <button class="filter-btn active" data-filter="all"><i class="bi bi-grid"></i> All</button>
+        <button class="filter-btn" data-filter="hod"><i class="bi bi-person-badge"></i> HODs</button>
+        <button class="filter-btn" data-filter="professor"><i class="bi bi-mortarboard"></i> Professors</button>
+      </div>
+
+      <!-- Faculty Container -->
+      <div class="row" id="facultyContainer">
+        <!-- Faculty cards will be rendered here by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Contact Us</h2>
+        <p>Get in touch with us for any queries</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+          <div class="contact-card">
+            <h3 class="mb-4">Get In Touch</h3>
+            <div class="contact-info-item">
+              <div class="contact-icon">
+                <i class="bi bi-geo-alt"></i>
+              </div>
+              <div>
+                <h6>Address</h6>
+                <p>Education City, Nainital - 263001</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-icon">
+                <i class="bi bi-telephone"></i>
+              </div>
+              <div>
+                <h6>Phone</h6>
+                <p>+91 9411158375</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-icon">
+                <i class="bi bi-envelope"></i>
+              </div>
+              <div>
+                <h6>Email</h6>
+                <p>info@gpnainital.ac.in</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-icon">
+                <i class="bi bi-clock"></i>
+              </div>
+              <div>
+                <h6>Office Hours</h6>
+                <p>Mon - Sat: 9:00 AM - 5:00 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="contact-card">
+            <h3 class="mb-4">Send Us a Message</h3>
+            <form>
+              <div class="row">
+                <div class="col-md-6">
+                  <input type="text" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6">
+                  <input type="email" class="form-control" placeholder="Your Email" required>
+                </div>
+              </div>
+              <input type="text" class="form-control" placeholder="Subject" required>
+              <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+              <button type="submit" class="btn btn-apply w-100">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+                <div class="footer-about">
+          <h3>Government Polytechnic Nainital</h3>
+          <p>We are a premier technical institute in Uttarakhand, committed to providing quality education and making learning resources accessible to all students through our Digital Audio Video Book Platform.</p>
+          <div class="footer-social">
+            <a href="https://facebook.com" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://youtube.com" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="book.html">Books</a></li>
+            <li><a href="notes.html">Notes</a></li>
+            <li><a href="videos.html">Videos</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="audios.html">Audios</a></li>
+            <li><a href="brochure.html">Brochure</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html">Feedback</a></li>
+            <li><a href="announcement.html">New Announcement</a></li>
+          </ul>
+        </div>
+        <div class="footer-gallery">
+          <h4>Photo Gallery</h4>
+          <div class="gallery-grid">
+            <a href="images/college/cp12.jpg" target="_blank"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=150" alt="Gallery 1"></a>
+            <a href="images/college/cp2.jpg" target="_blank"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=150" alt="Gallery 2"></a>
+            <a href="images/college/cp3.jpg" target="_blank"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=150" alt="Gallery 3"></a>
+            <a href="images/college/cp4.jpg" target="_blank"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=150" alt="Gallery 4"></a>
+            <a href="images/college/CP11.jpg" target="_blank"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=150" alt="Gallery 5"></a>
+            <a href="images/college/cp6.jpg" target="_blank"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=150" alt="Gallery 6"></a>
+            <a href="images/college/cp7.jpg" target="_blank"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=150" alt="Gallery 7"></a>
+            <a href="images/college/cp9.jpg" target="_blank"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=150" alt="Gallery 8"></a>
+            <a href="images/college/cp10.jpg" target="_blank"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=150" alt="Gallery 9"></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Contact Info</h4>
+          <ul class="contact-info">
+            <li><a href="tel:+919411158375" class="phone"><i class="fas fa-phone"></i> +91 9411158375</a></li>
+            <li><a href="mailto:info@gpnainital.ac.in" class="email"><i class="fas fa-envelope"></i> info@gpnainital.ac.in</a></li>
+            <li><a href="https://maps.google.com/?q=Government+Polytechnic+Nainital" target="_blank" class="location"><i class="fas fa-map-marker-alt"></i> Nainital, Uttarakhand</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p><i class="fas fa-copyright"></i> 2025 Digital Audio Video Book | Government Polytechnic Nainital. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <script>
+    // --- Faculty Data ---
+    const facultyData = [
+      {
+        id: 1,
+        name: "Dr. Rajesh Kumar",
+        designation: "Principal",
+        department: "Administration",
+        category: "hod",
+        qualification: "Ph.D. in Engineering",
+        experience: "25+ Years",
+        specialization: "Academic Administration",
+        contact: "principal@gpnainital.edu"
+      },
+      {
+        id: 2,
+        name: "Prof. Amit Sharma",
+        designation: "HOD - IT",
+        department: "Information Technology",
+        category: "hod",
+        qualification: "M.Tech, B.Tech",
+        experience: "15+ Years",
+        specialization: "Software Development, AI/ML",
+        contact: "hod.it@gpnainital.edu"
+      },
+      {
+        id: 3,
+        name: "Prof. Sunita Devi",
+        designation: "HOD - Civil",
+        department: "Civil Engineering",
+        category: "hod",
+        qualification: "M.Tech, B.Tech",
+        experience: "18+ Years",
+        specialization: "Structural Engineering",
+        contact: "hod.civil@gpnainital.edu"
+      },
+      {
+        id: 4,
+        name: "Prof. Vikram Singh",
+        designation: "Asst. Professor",
+        department: "Electrical Engineering",
+        category: "professor",
+        qualification: "M.Tech, B.Tech",
+        experience: "12+ Years",
+        specialization: "Power Systems",
+        contact: "vikram.singh@gpnainital.edu"
+      },
+      {
+        id: 5,
+        name: "Prof. Priya Verma",
+        designation: "Asst. Professor",
+        department: "Information Technology",
+        category: "professor",
+        qualification: "M.Tech, B.Tech",
+        experience: "10+ Years",
+        specialization: "Web Development, Database",
+        contact: "priya.verma@gpnainital.edu"
+      },
+      {
+        id: 6,
+        name: "Prof. Ramesh Gupta",
+        designation: "HOD - Electronics",
+        department: "Electronics & Communication",
+        category: "hod",
+        qualification: "M.Tech, B.Tech",
+        experience: "20+ Years",
+        specialization: "VLSI, Embedded Systems",
+        contact: "hod.ece@gpnainital.edu"
+      },
+      {
+        id: 7,
+        name: "Prof. Anjali Singh",
+        designation: "Asst. Professor",
+        department: "Mechanical Engineering",
+        category: "professor",
+        qualification: "M.Tech, B.Tech",
+        experience: "8+ Years",
+        specialization: "Thermodynamics, CAD",
+        contact: "anjali.singh@gpnainital.edu"
+      },
+      {
+        id: 8,
+        name: "Prof. Mohd. Khan",
+        designation: "Asst. Professor",
+        department: "Pharmacy",
+        category: "professor",
+        qualification: "M.Pharm, B.Pharm",
+        experience: "14+ Years",
+        specialization: "Pharmaceutical Chemistry",
+        contact: "mohd.khan@gpnainital.edu"
+      }
+    ];
+
+    // --- Initialize AOS Animation ---
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+
+    // --- Render Faculty Cards ---
+    function renderFacultyCards(filter = 'all') {
+      const container = document.getElementById('facultyContainer');
+      container.innerHTML = '';
+
+      const filteredData = filter === 'all' 
+        ? facultyData 
+        : facultyData.filter(item => item.category === filter);
+
+      filteredData.forEach(faculty => {
+        const card = document.createElement('div');
+        card.className = 'col-md-6 col-lg-4 mb-4 faculty-card-item';
+        card.setAttribute('data-category', faculty.category);
+        card.innerHTML = `
+          <div class="faculty-card" onclick="openFacultyModal(${faculty.id})">
+            <div class="faculty-img">
+              <i class="bi bi-person-circle"></i>
+            </div>
+            <div class="faculty-info">
+              <h3 class="faculty-name">${faculty.name}</h3>
+              <p class="faculty-role">${faculty.designation}</p>
+              <span class="faculty-dept">${faculty.department}</span>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // --- Faculty Modal Functions ---
+    function openFacultyModal(id) {
+      const faculty = facultyData.find(item => item.id === id);
+      if (!faculty) return;
+
+      document.getElementById('facultyDetailName').textContent = faculty.name;
+      document.getElementById('facultyDetailDesignation').textContent = faculty.designation;
+      document.getElementById('facultyDetailDept').textContent = faculty.department;
+      document.getElementById('facultyDetailQualification').textContent = faculty.qualification;
+      document.getElementById('facultyDetailExperience').textContent = faculty.experience;
+      document.getElementById('facultyDetailSpecialization').textContent = faculty.specialization;
+      document.getElementById('facultyDetailContact').textContent = faculty.contact;
+
+      document.getElementById('facultyDetailModal').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeFacultyModal() {
+      document.getElementById('facultyDetailModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // --- Filter Functionality ---
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        btn.classList.add('active');
+        
+        const filterValue = btn.getAttribute('data-filter');
+        
+        // Filter faculty cards
+        const facultyCards = document.querySelectorAll('.faculty-card-item');
+        facultyCards.forEach(card => {
+          if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+            card.style.display = 'block';
+            card.style.opacity = '0';
+            setTimeout(() => card.style.opacity = '1', 50);
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // --- Department Filter for Courses ---
+    document.querySelectorAll('.dept-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        document.querySelectorAll('.dept-btn').forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        btn.classList.add('active');
+        
+        const filterValue = btn.getAttribute('data-filter');
+        
+        // Filter course cards
+        const courseCards = document.querySelectorAll('.course-item');
+        courseCards.forEach(card => {
+          if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+            card.style.display = 'block';
+            card.style.opacity = '0';
+            setTimeout(() => card.style.opacity = '1', 50);
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // --- Close Modal Functions ---
+    document.getElementById('facultyDetailClose').addEventListener('click', closeFacultyModal);
+
+    // Close modal when clicking outside
+    window.addEventListener('click', (event) => {
+      if (event.target.id === 'facultyDetailModal') {
+        closeFacultyModal();
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeFacultyModal();
+      }
+    });
+
+    // --- Initialize ---
+    document.addEventListener('DOMContentLoaded', () => {
+      renderFacultyCards();
+    });
+
+    // --- Smooth Scroll for Navigation ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
