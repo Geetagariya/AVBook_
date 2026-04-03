@@ -1,3 +1,6 @@
+<?
+$conn = mysqli_connect("localhost","root","","avbook_db",3307);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
