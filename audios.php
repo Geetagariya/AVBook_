@@ -1,14 +1,10 @@
 <?php include 'db.php';
 
-// Fetch all audios
-$query = "SELECT * FROM audios ORDER BY category ASC";
-$result = mysqli_query($conn, $query);
-
-// Group by category
-$audio_data = [];
-
-while($row = mysqli_fetch_assoc($result)){
-    $audio_data[$row['category']][] = $row;
+function getAudios($conn, $category) {
+    $stmt = $conn->prepare("SELECT * FROM audios WHERE category=? ORDER BY created_at DESC");
+    $stmt->bind_param("s", $category);
+    $stmt->execute();
+    return $stmt->get_result();
 }
 ?>
 
@@ -92,22 +88,31 @@ body{font-family:'Poppins',sans-serif;background:#f5f7fa;overflow-x:hidden;line-
 .page-title h1{font-size:38px;font-weight:700;margin-bottom:10px;font-family:'Playfair Display',serif}
 .page-title p{font-size:16px;opacity:0.9}
 
-/* ===== AUDIO CONTENT SECTION ===== */
-.audio-section{padding:60px 0}
-.audio-container{max-width:900px;margin:0 auto}
-.audio-category{background:#fff;border-radius:10px;margin-bottom:20px;box-shadow:0 5px20px rgba(0,0,0,0.08);overflow:hidden}
-.audio-category-header{background:linear-gradient(135deg,var(--primary-color),#283593);color:#fff;padding:18px 25px;font-size:18px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:0.3s}
-.audio-category-header:hover{background:linear-gradient(135deg,#283593,var(--primary-color))}
-.audio-category-header i{transition:0.3s}
-.audio-category.open .audio-category-header i{transform:rotate(180deg)}
-.audio-category-content{padding:20px;display:none}
-.audio-category.open .audio-category-content{display:block}
-.audio-item{background:var(--light-bg);padding:15px 20px;border-radius:8px;margin-bottom:15px;transition:0.3s;border-left:4px solid transparent}
-.audio-item:hover{border-left-color:var(--secondary-color);box-shadow:0 5px15px rgba(0,0,0,0.1)}
+/* ===== SEARCH BAR ===== */
+.search-section{padding:35px 0;background:#fff;box-shadow:0 4px 15px rgba(0,0,0,0.07)}
+.search-container{max-width:1100px;margin:0 auto;padding:0 15px;position:relative}
+.search-input{width:100%;padding:16px 20px 16px 55px;font-size:1.05rem;border:2px solid #ddd;border-radius:50px;outline:none;transition:all 0.3s ease}
+.search-input:focus{border-color:var(--primary-color);box-shadow:0 0 0 4px rgba(26,35,126,0.15)}
+.search-icon{position:absolute;left:25px;top:50%;transform:translateY(-50%);color:var(--primary-color);font-size:1.3rem}
+
+/* ===== CONTENT SECTION ===== */
+.content-section{padding:60px 0;background:#fff}
+.content-container{max-width:1100px;margin:0 auto;padding:0 15px}
+
+/* ===== ACCORDION ===== */
+.accordion{background:#fff;border-radius:8px;margin-bottom:15px;box-shadow:0 2px 6px rgba(0,0,0,0.1);overflow:hidden;border:1px solid #e0e0e0}
+.accordion-header{padding:15px 20px;cursor:pointer;background:var(--primary-color);color:#fff;font-size:18px;display:flex;justify-content:space-between;align-items:center;transition:all 0.3s ease}
+.accordion-header:hover{background:#283593}
+.accordion-header span{font-weight:bold}
+.accordion-content{display:none;background:#f9fcff;padding:20px}
+
+/* ===== AUDIO ITEM ===== */
+.audio-item{background:#fff;padding:15px 20px;border-radius:8px;margin-bottom:15px;border-left:4px solid transparent;transition:0.3s;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+.audio-item:hover{border-left-color:var(--secondary-color);box-shadow:0 5px 15px rgba(0,0,0,0.1)}
 .audio-item:last-child{margin-bottom:0}
 .audio-item h4{color:var(--primary-color);font-size:15px;font-weight:600;margin-bottom:10px}
 .audio-item audio{width:100%;height:40px;outline:none}
-.audio-item audio::-webkit-media-controls-panel{background:#fff}
+.no-audio{text-align:center;padding:20px;color:#888;font-style:italic}
 
 /* ===== FOOTER ===== */
 .footer-main {
@@ -396,62 +401,57 @@ body{font-family:'Poppins',sans-serif;background:#f5f7fa;overflow-x:hidden;line-
 </section>
 
 
+<!-- SEARCH BAR -->
+<div class="search-section">
+    <div class="search-container">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="audioSearch" class="search-input" placeholder="Search audio lectures by title...">
+    </div>
+</div>
+
 <!-- AUDIO CONTENT -->
-<section class="audio-section">
-<div class="container">
-<div class="audio-container">
+<section class="content-section">
+    <div class="content-container">
 
+<?php
+$branches = [
+    ['key'=>'first_year',  'label'=>'First Year',              'icon'=>'fa-book-reader'],
+    ['key'=>'IT',          'label'=>'Information Technology',   'icon'=>'fa-laptop-code'],
+    ['key'=>'Civil',       'label'=>'Civil Engineering',        'icon'=>'fa-hard-hat'],
+    ['key'=>'Electrical',  'label'=>'Electrical Engineering',   'icon'=>'fa-bolt'],
+    ['key'=>'Electronics', 'label'=>'Electronic Engineering',   'icon'=>'fa-microchip'],
+    ['key'=>'Mechanical',  'label'=>'Mechanical Engineering',   'icon'=>'fa-cogs'],
+    ['key'=>'Pharmacy',    'label'=>'Pharmacy',                 'icon'=>'fa-pills'],
+];
 
-<?php if(!empty($audio_data)): ?>
-
-    <?php foreach($audio_data as $category => $audios): ?>
-    <div class="audio-category ">
-        <div class="audio-category-header" onclick="toggleCategory(this)">
-            <span><i class="fas fa-headphones"></i> <?php echo ucfirst($category); ?></span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-
-        <div class="audio-category-content">
-            <?php foreach($audios as $audio): ?>
-            <div class="audio-item">
-                <h4><?php echo htmlspecialchars($audio['title']); ?></h4>
-                <audio controls>
-                    <source src="<?php echo $audio['file_path']; ?>" type="audio/mp3">
-                </audio>
+foreach($branches as $branch):
+    $result = getAudios($conn, $branch['key']);
+?>
+        <div class="accordion">
+            <div class="accordion-header" onclick="toggleAcc(this)">
+                <span><i class="fas <?php echo $branch['icon']; ?>"></i>&nbsp; <?php echo $branch['label']; ?></span>
+                <span class="toggle-icon">+</span>
             </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-    <?php endforeach; ?>
-
+            <div class="accordion-content">
+<?php if(mysqli_num_rows($result) > 0): ?>
+<?php while($audio = mysqli_fetch_assoc($result)): ?>
+                <div class="audio-item">
+                    <h4><i class="fas fa-headphones" style="color:var(--secondary-color);margin-right:8px"></i><?php echo htmlspecialchars($audio['title']); ?></h4>
+                    <audio controls style="width:100%">
+                        <source src="<?php echo htmlspecialchars($audio['file_path']); ?>" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+<?php endwhile; ?>
 <?php else: ?>
-
-    <!-- EMPTY STATE UI -->
-    <div class="audio-category open reveal">
-        <div class="audio-category-header">
-            <span><i class="fas fa-code"></i> C Language</span>
-        </div>
-
-        <div class="audio-category-content">
-		<div class="audio-item">
-            <p style="text-align:center; padding:20px;">
-                No audio uploaded yet ðŸŽ§
-            </p>
-        </div>
-    </div>
-	
-
+                <p class="no-audio">No audio uploaded yet for this branch.</p>
 <?php endif; ?>
-</div>
-</div>
+            </div>
+        </div>
+<?php endforeach; ?>
+
+    </div>
 </section>
-
-
-
-
-
-
-
 
 
 
@@ -525,11 +525,35 @@ body{font-family:'Poppins',sans-serif;background:#f5f7fa;overflow-x:hidden;line-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// Toggle category accordion
-function toggleCategory(header) {
-const category = header.parentElement;
-category.classList.toggle('open');
+// Toggle accordion
+function toggleAcc(header) {
+    const content = header.nextElementSibling;
+    const icon = header.querySelector('.toggle-icon');
+    const isOpen = content.style.display === 'block';
+    content.style.display = isOpen ? 'none' : 'block';
+    icon.textContent = isOpen ? '+' : '-';
 }
+
+// Search functionality
+document.getElementById('audioSearch').addEventListener('input', function() {
+    const q = this.value.toLowerCase();
+    document.querySelectorAll('.accordion').forEach(function(acc) {
+        let hasMatch = false;
+        acc.querySelectorAll('.audio-item').forEach(function(item) {
+            const title = item.querySelector('h4').textContent.toLowerCase();
+            if (title.includes(q)) {
+                item.style.display = 'block';
+                hasMatch = true;
+            } else {
+                item.style.display = q ? 'none' : 'block';
+            }
+        });
+        if (q) {
+            acc.querySelector('.accordion-content').style.display = hasMatch ? 'block' : 'none';
+            acc.querySelector('.toggle-icon').textContent = hasMatch ? '-' : '+';
+        }
+    });
+});
 
 // REVEAL ANIMATION ON SCROLL
 function reveal(){
