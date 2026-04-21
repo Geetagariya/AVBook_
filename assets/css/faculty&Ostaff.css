@@ -1,0 +1,854 @@
+ :root {
+      --primary-blue: #0d6efd;
+      --secondary-blue: #0a58ca;
+      --light-blue: #e3f2fd;
+      --dark-blue: #052c65;
+      --accent-blue: #3d8bfd;
+      --text-primary: #212529;
+      --text-secondary: #495057;
+      --text-muted: #6c757d;
+      --white: #ffffff;
+      --light-bg: #f8f9fa;
+    }
+main{
+  margin-top: 2%;
+  margin-bottom: 6%;
+}
+    body {
+      background-color: var(--light-bg);
+      color: var(--text-primary);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      
+      min-height: 100vh;
+    }
+
+/* Header */         
+    .header
+     { display: flex; 
+      align-items: center; 
+      justify-content: space-between;
+       padding: 15px 30px;
+        background-color: #004080;
+         color: white; 
+        }          
+    .logo-section {
+       display: flex; 
+       align-items: center; 
+      }          
+    .logo-section img { 
+      width: 15%;
+       height: 10%;
+        object-fit: contain;
+         margin-right: 15px; 
+        }          
+    .college-text {
+       display: flex;
+        flex-direction: column; 
+        line-height: 1.2;
+       }          
+    .college-text .hindi {
+       font-size: 28px;
+        font-weight: bold;
+       }          
+    .college-text .english { font-size: 24px; }          
+
+    .center-title { width: 100%; overflow: hidden; background-color: #f9f9f9; padding: 10px 0; border-top: 2px solid #004080; border-bottom: 2px solid #004080; } 
+    .marquee { display: flex; width: max-content; animation: scroll 30s linear infinite; } 
+    .marquee span { margin-right: 80%; font-size: 24px; font-weight: bold; color: #004080; white-space: nowrap; } 
+    @keyframes scroll { 0% { transform: translateX(0%); } 100% { transform: translateX(-200%); } }  
+
+    /* Navigation */         
+    .nav-section { 
+      display: flex;
+       justify-content: center;
+        background-color: #0066cc;
+       }          
+    .nav-section a { 
+      color: white;
+       text-decoration: none;
+        padding: 12px 25px; 
+        margin: 5px; 
+        background-color: #004080; 
+        border-radius: 5px; 
+        transition: 0.3s; 
+      }          
+    .nav-section a:hover {
+       background-color: #00264d;
+       }  
+
+
+       
+    .nav-section2 { 
+      display: flex;
+       justify-content: center;
+        background-color: #0066cc;
+       }          
+
+.nav-section2  {
+  color: red;                  /* Text ka color red */
+  text-shadow: 0 0 2px yellow; /* Outline yellow */
+  animation: blink 1s infinite; /* Blink effect */
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+
+
+
+
+       
+    /* Publisher Button Highlight */
+.nav-section a.publisher {
+  background-color: #0099ff;   /* halka blue */
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 0 8px rgba(0,153,255,0.7);
+  transition: 0.3s ease-in-out;
+}
+
+.nav-section a.publisher:hover {
+  background-color: #0066cc;   /* dark blue hover */
+  box-shadow: 0 0 15px rgba(0,153,255,1);
+}     
+
+
+
+
+    .section-title {
+      position: relative;
+      margin-bottom: 2rem;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--dark-blue);
+      text-align: center;
+      padding-bottom: 15px;
+    }
+  .faculty-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      color: white;
+      padding: 6rem 0;
+      text-align: center;
+      position: relative;
+    }
+
+    
+
+    .faculty-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Blue Theme Faculty Cards */
+    .faculty-card {
+      border: none;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+      background: var(--white);
+      box-shadow: 0 6px 20px rgba(13, 110, 253, 0.15);
+      margin-bottom: 2rem;
+      height: 50vh;
+      overflow: hidden;
+      cursor: pointer;
+      max-width: 350px;
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px solid rgba(13, 110, 253, 0.1);
+    }
+
+    .faculty-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(13, 110, 253, 0.25);
+      border-color: rgba(13, 110, 253, 0.3);
+    }
+
+    .faculty-img-container {
+      position: relative;
+      height: 20vh;
+      overflow: hidden;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--light-blue) 0%, #e1f0ff 100%);
+    }
+
+    .faculty-thumbnail {
+      width: auto;
+      height: 100%;
+      max-width: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .faculty-card:hover .faculty-thumbnail {
+      transform: scale(1.05);
+    }
+
+    .faculty-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(13, 110, 253, 0.8));
+      color: white;
+      padding: 0 20px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .faculty-card:hover .faculty-overlay {
+      transform: translateY(0);
+    }
+
+    .faculty-name {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .faculty-designation {
+      font-size: 0.6rem;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+
+    .faculty-card-body {
+      padding: 1.5rem;
+      background: var(--white);
+    }
+
+    .faculty-qualification {
+      color: var(--text-secondary);
+      font-size: 0.7rem;
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+
+    .faculty-experience {
+      color: var(--primary-blue);
+      font-size: 0.7rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      background: var(--light-blue);
+      padding: 6px 6px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .faculty-specialization {
+      color: var(--text-secondary);
+      font-size: 0.7rem;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .faculty-actions {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .view-profile-btn {
+      background: var(--primary-blue);
+      border: 1px solid var(--primary-blue);
+      color: white;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .view-profile-btn:hover {
+      background: var(--secondary-blue);
+      border-color: var(--secondary-blue);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+    }
+
+    /* Fixed Modal - Centered on Viewport */
+    .faculty-detail-modal {
+      position: fixed;
+      top: 50px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1050;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .faculty-detail-modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .faculty-detail-content {
+      background-color: var(--white);
+      border-radius: 20px;
+      width: 70vw;
+      max-width: 1000px;
+      max-height: 80vh; /* Reduced to ensure it fits in viewport */
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      margin: auto;
+      /* Ensure modal stays centered in viewport */
+      position: relative;
+      top: 0;
+      transform: none;
+    }
+
+    .faculty-detail-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--primary-blue);
+      border: none;
+      font-size: 1.5rem;
+      color: white;
+      cursor: pointer;
+      z-index: 1;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+    }
+
+    .faculty-detail-close:hover {
+      background: var(--secondary-blue);
+      transform: rotate(90deg);
+    }
+
+    .faculty-detail-body {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    @media (min-width: 992px) {
+      .faculty-detail-body {
+        flex-direction: row;
+      }
+      
+    }
+     @media (max-width: 992px) {
+     
+               main{
+  margin-top: 80px;
+}
+    }
+
+    .faculty-detail-image {
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--light-blue) 0%, #e1f0ff 100%);
+    }
+
+    .faculty-detail-img-container {
+      width: 100%;
+      max-width: 280px;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.15);
+      border: 1px solid rgba(13, 110, 253, 0.1);
+    }
+
+    .faculty-detail-main-image {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .faculty-detail-info {
+      flex: 1;
+      padding: 40px;
+      overflow-y: auto;
+      background: var(--white);
+    }
+
+    .faculty-detail-name {
+      margin-bottom: 10px;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--dark-blue);
+    }
+
+    .faculty-detail-designation {
+      color: var(--primary-blue);
+      margin-bottom: 25px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--light-blue);
+    }
+
+    .faculty-detail-about {
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+      font-size: 1.05rem;
+    }
+
+    /* Faculty Detail Sections - Default display */
+    .faculty-detail-section {
+      margin-bottom: 1.8rem;
+      padding: 20px;
+      background: var(--light-blue);
+      border-radius: 12px;
+      border-left: 4px solid var(--primary-blue);
+      display: block; /* Default to visible */
+    }
+
+    .faculty-detail-section h6 {
+      color: var(--dark-blue);
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+    }
+
+    .faculty-detail-section h6 i {
+      font-size: 1.2rem;
+      color: var(--primary-blue);
+    }
+
+    .faculty-detail-section p {
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+
+    .faculty-detail-section ul {
+      margin-bottom: 0;
+      padding-left: 20px;
+    }
+
+    .faculty-detail-section li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+      color: var(--text-secondary);
+    }
+
+    /* Blue Theme Filter Buttons */
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 40px;
+      justify-content: center;
+    }
+
+    .filter-btn {
+      padding: 12px 24px;
+      border: 2px solid var(--primary-blue);
+      background: transparent;
+      color: var(--primary-blue);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+    }
+
+    .filter-btn:hover {
+      background: var(--primary-blue);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(13, 110, 253, 0.3);
+    }
+
+    .filter-btn.active {
+      background: var(--primary-blue);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(13, 110, 253, 0.3);
+    }
+
+    /* Department Badges */
+    .department-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--primary-blue);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      z-index: 2;
+      box-shadow: 0 4px 8px rgba(13, 110, 253, 0.3);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+  
+      .faculty-detail-content {
+        width: 95%;
+        max-height: 80vh;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .faculty-detail-image {
+        padding: 25px;
+      }
+      
+      .faculty-detail-info {
+        padding: 25px;
+      }
+      
+      .faculty-detail-img-container {
+        max-width: 200px;
+        height: 200px;
+      }
+      
+      .faculty-detail-name {
+        font-size: 1.6rem;
+      }
+
+    }
+
+    @media (max-width: 576px) {
+  
+      .section-title {
+        font-size: 1.6rem;
+      }
+      .faculty-card {
+      height: 50vh;
+      width: 60vw;
+     
+    }
+
+
+   .faculty-card  > .faculty-img-container {
+    
+      height: 20vh;
+  }
+
+    
+      .faculty-detail-content {
+        width: 98%;
+        max-height: 70vh;
+      }
+      
+      .faculty-detail-image {
+        padding: 20px;
+        height: 30vh;
+      }
+      
+      .faculty-detail-info {
+        padding: 20px;
+      }
+      
+      .faculty-detail-img-container {
+        max-width: 180px;
+        height: 180px;
+      }
+      
+      .faculty-detail-name {
+        font-size: 1rem;
+      }
+      
+      .faculty-card {
+        max-width: 100%;
+      }
+      
+      .filter-btn {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+      }
+      
+      .faculty-img-container {
+        height: 220px;
+      }
+      .faculty-detail-designation{
+        font-size: 1rem;
+        padding-bottom: 10px;
+      }
+      .faculty-detail-about{
+        font-size: 0.8rem;
+        margin-bottom: 20px;
+      }
+      .faculty-detail-section{
+        font-size: 0.6rem;
+        height: auto;
+      }
+      .faculty-detail-section h6{
+        font-size: 0.9rem;
+      }
+    }
+    
+    .no-faculty-message {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+    }
+    
+    .no-faculty-message i {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: var(--light-blue);
+    }
+    
+    .no-faculty-message h4 {
+      font-weight: 500;
+      margin-bottom: 5px;
+      color: var(--text-secondary);
+    }
+
+    /* Sections */
+    section {
+      padding: 3rem 0;
+    }
+
+    .section-title {
+      position: relative;
+      margin-bottom: 1rem;
+      text-align: center;
+      font-size: 2rem;
+      color: var(--text-primary);
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--primary-color);
+      margin: 15px auto;
+      border-radius: 2px;
+    }
+
+/* Category Badges for office staff */
+.category-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--secondary-blue);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  z-index: 2;
+  box-shadow: 0 4px 8px rgba(10, 88, 202, 0.3);
+}
+
+/* Filter buttons styling */
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 40px;
+  justify-content: center;
+}
+
+.filter-btn {
+  padding: 12px 24px;
+  border: 2px solid var(--primary-blue);
+  background: transparent;
+  color: var(--primary-blue);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.filter-btn:hover {
+  background: var(--primary-blue);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(13, 110, 253, 0.3);
+}
+
+.filter-btn.active {
+  background: var(--primary-blue);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(13, 110, 253, 0.3);
+}
+/* Add these responsive text size rules to your existing faculty.css */
+
+/* Mobile First Approach */
+.faculty-name {
+  font-weight: 600;
+  font-size: 0.9rem; /* 9rem equivalent for mobile */
+  margin-bottom: 0.2rem;
+}
+
+.faculty-designation {
+  font-size: 0.7rem; /* 7rem equivalent for mobile */
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+.faculty-qualification {
+  color: var(--text-secondary);
+  font-size: 0.7rem; /* 7rem equivalent for mobile */
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.faculty-experience {
+  color: var(--primary-blue);
+  font-size: 0.7rem; /* 7rem equivalent for mobile */
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  background: var(--light-blue);
+  padding: 6px 6px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.faculty-specialization {
+  color: var(--text-secondary);
+  font-size: 0.7rem; /* 7rem equivalent for mobile */
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+/* Modal text sizes for mobile */
+.faculty-detail-name {
+  margin-bottom: 10px;
+  font-size: 1.6rem; /* Larger for mobile */
+  font-weight: 700;
+  color: var(--dark-blue);
+}
+
+.faculty-detail-designation {
+  color: var(--primary-blue);
+  margin-bottom: 25px;
+  font-size: 1rem; /* 7rem equivalent */
+  font-weight: 500;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--light-blue);
+}
+
+.faculty-detail-about {
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+  font-size: 0.9rem; /* 7rem equivalent */
+}
+
+.faculty-detail-section p {
+  margin-bottom: 0;
+  line-height: 1.6;
+  font-size: 0.8rem; /* 7rem equivalent */
+}
+
+/* Center align for mobile */
+@media (max-width: 768px) {
+  .faculty-card {
+    text-align: center;
+  }
+  
+  .faculty-actions {
+    justify-content: center;
+  }
+  
+  .filter-buttons {
+    justify-content: center;
+  }
+  
+  .faculty-detail-content {
+    text-align: center;
+  }
+}
+
+/* Tablet and larger screens */
+@media (min-width: 768px) {
+  .faculty-name {
+    font-size: 1rem;
+  }
+  
+  .faculty-designation {
+    font-size: 0.8rem;
+  }
+  
+  .faculty-qualification,
+  .faculty-experience,
+  .faculty-specialization {
+    font-size: 0.8rem;
+  }
+  
+  .faculty-detail-name {
+    font-size: 2rem;
+  }
+  
+  .faculty-detail-designation {
+    font-size: 1.2rem;
+  }
+  
+  .faculty-detail-about {
+    font-size: 1.05rem;
+  }
+  
+  .faculty-detail-section p {
+    font-size: 1rem;
+  }
+}
+
+/* Desktop screens */
+@media (min-width: 1200px) {
+  .faculty-name {
+    font-size: 1.1rem;
+  }
+  
+  .faculty-designation {
+    font-size: 0.9rem;
+  }
+}

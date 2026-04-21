@@ -1,0 +1,4 @@
+This folder holds book cover images.
+Structure: images/books/{branch}/{filename}.jpg
+Created by PHP mkdir() on first upload.
+DO NOT DELETE THIS FILE — it keeps the folder tracked by Git.

@@ -1,0 +1,4 @@
+This folder holds uploaded notes/papers/syllabus PDF files.
+Structure: pdf/notes_pdf/{branch}/ and pdf/exam_pdf/{branch}/ and pdf/syllabus_pdf/{branch}/
+Created by PHP mkdir() on first upload.
+DO NOT DELETE THIS FILE — it keeps the folder tracked by Git.

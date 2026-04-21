@@ -1,0 +1,40 @@
+Options -Indexes
+
+# ============================================================
+# Block direct browser access to sensitive admin-only files
+# ============================================================
+<FilesMatch "^(create_admin\.php|create_hash\.php|notesbackup\.php|practice\.php|fix_db\.ps1|fix_remaining\.ps1)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# ============================================================
+# PHP upload limits (adjust in cPanel php.ini if these fail)
+# ============================================================
+php_value upload_max_filesize 50M
+php_value post_max_size 55M
+php_value max_execution_time 300
+php_value max_input_time 300
+php_value memory_limit 256M
+
+# ============================================================
+# Security Headers
+# ============================================================
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ============================================================
+# Prevent directory listing in upload folders
+# ============================================================
+<IfModule mod_autoindex.c>
+    IndexIgnore *
+</IfModule>
+
+# ============================================================
+# UTF-8 encoding
+# ============================================================
+AddDefaultCharset UTF-8

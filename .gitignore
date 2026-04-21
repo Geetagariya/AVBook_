@@ -1,0 +1,33 @@
+# ============================================================
+# AVBook — .gitignore (Production-ready)
+# ============================================================
+
+# Dev/scratch files — NOT for deployment
+notesbackup.php
+practice.php
+create_hash.php
+
+# OS & editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+.idea/
+.vscode/
+*.log
+
+# Uploaded user content — upload via FTP to server directly
+# (large binary files don't belong in Git)
+PDF/*
+pdf/*
+audios/*
+images/books/*
+images/college/*
+
+# But KEEP the placeholder files so folders exist on clone
+!PDF/.gitkeep
+!pdf/.gitkeep
+!audios/.gitkeep
+!images/books/.gitkeep
+!images/college/.gitkeep

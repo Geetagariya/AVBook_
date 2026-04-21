@@ -1,0 +1,4 @@
+This folder holds uploaded audio lecture files.
+Structure: audios/{category}/{filename}.mp3
+Created by PHP mkdir() on first upload.
+DO NOT DELETE THIS FILE — it keeps the folder tracked by Git.

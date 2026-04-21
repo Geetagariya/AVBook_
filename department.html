@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+     <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <style>
+       /* ===== BASE STYLES ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:#f5f7fa;overflow-x:hidden;line-height:1.6}
+
+/* ===== COLLEGE COLORS ===== */
+:root{
+    --primary-color:#1a237e;
+    --secondary-color:#800000;
+    --accent-color:#ffd700;
+    --dark-text:#1a1a2e;
+    --light-text:#666;
+    --white:#ffffff;
+    --light-bg:#f5f7fa;
+}
+
+/* ===== TOPBAR ===== */
+.topbar{background:linear-gradient(90deg,#1a237e,#283593);color:#fff;padding:8px 0;font-size:14px}
+.topbar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.topbar-left{display:flex;align-items:center;gap:20px}
+.topbar-left i{margin-right:8px;color:#ffd700}
+.topbar-right{display:flex;align-items:center;gap:15px}
+.topbar-right a{color:#fff;text-decoration:none;font-size:13px;transition:0.3s}
+.topbar-right a:hover{color:#ffd700}
+
+/* ===== HEADER ===== */
+.header-area{background:#fff;box-shadow:0 2px 15px rgba(0,0,0,0.1);padding:18px 0;position:sticky;top:0;z-index:1000}
+.logo-section{display:flex;align-items:center;gap:12px}
+.logo-box{background:transparent;padding:0}
+.logo-box img{width:90px;height:auto;display:block}
+.logo-text h4{margin:0;color:var(--primary-color);font-weight:700;font-size:15px;line-height:1.2;white-space:nowrap}
+.logo-text span{color:var(--secondary-color);font-size:12px;font-weight:600;white-space:nowrap}
+
+/* ===== NAVIGATION ===== */
+.main-nav{display:flex;align-items:center;gap:2px;flex-wrap:nowrap;justify-content:flex-end}
+.main-nav a{color:var(--dark-text);text-decoration:none;font-weight:600;font-size:13px;padding:8px 12px;border-radius:5px;transition:all 0.3s;white-space:nowrap}
+.main-nav a:hover{background:var(--primary-color);color:#fff}
+.main-nav a.active{background:var(--primary-color);color:#fff}
+.main-nav a.highlight{background:var(--secondary-color);color:#fff}
+
+/* NEW BUTTON - FAST BLINKING WITH WHITE TEXT */
+.new-btn{background:#ff0000;color:#ffffff;padding:6px 14px;border-radius:20px;font-weight:700;font-size:12px;display:inline-block;animation:blink 0.3s infinite;text-decoration:none;transition:0.3s;border:none;cursor:pointer}
+.new-btn:hover{background:#cc0000;transform:scale(1.1);color:#ffffff}
+.new-btn i{margin-right:5px}
+@keyframes blink{
+0%,100%{opacity:1;transform:scale(1);}
+50%{opacity:0.5;transform:scale(0.95);}
+}
+
+/* ===== MARQUEE SECTION - MOVING TEXT ===== */
+.marquee-section{background:linear-gradient(90deg,var(--secondary-color),#9c1a1a,var(--secondary-color));padding:12px 0;overflow:hidden}
+.marquee-container{overflow:hidden;white-space:nowrap}
+.marquee-content{display:inline-block;animation:marquee 20s linear infinite}
+.marquee-content span{margin-right:60px;font-size:16px;font-weight:600;color:#fff;display:inline-flex;align-items:center;gap:10px}
+.marquee-content span i{color:var(--accent-color)}
+@keyframes marquee{
+0%{transform:translateX(0);}
+100%{transform:translateX(-50%);}
+}
+ :root {
+      --primary-color: #004080;
+      --secondary-color: #0056b3;
+      --accent-color: #ffc107;
+      --text-dark: #333;
+      --text-light: #666;
+      --bg-light: #f8f9fa;
+      --bg-dark: #1a1a2e;
+      --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-dark);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+     /* --- Enhanced Navigation --- */
+    .navbar {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+      padding: 1rem 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      padding: 0.5rem 0;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.8rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-link {
+      color: var(--text-dark) !important;
+      font-weight: 500;
+      margin: 0 15px;
+      padding: 10px 0 !important;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: 0;
+      left: 50%;
+      background: var(--gradient-primary);
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .nav-link:hover::before,
+    .nav-link.active::before {
+      width: 100%;
+      left: 0;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary-color) !important;
+      transform: translateY(-2px);
+    }
+
+    .btn-apply {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      border: none;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-apply::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-apply:hover::before {
+      left: 100%;
+    }
+
+    .btn-apply:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 64, 128, 0.4);
+      color: white;
+    }
+
+
+
+
+
+
+    /* Navigation */         
+    .nav-section { display: flex; justify-content: center; background-color: #0066cc; }          
+    .nav-section a { color: white; text-decoration: none; padding: 12px 25px; margin: 5px; background-color: #004080; border-radius: 5px; transition: 0.3s; }          
+    .nav-section a:hover { background-color: #00264d; }  
+    /* Publisher Button Highlight */
+.nav-section a.publisher {
+  background-color: #0099ff;   /* halka blue */
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 0 8px rgba(0,153,255,0.7);
+  transition: 0.3s ease-in-out;
+}
+
+.nav-section a.publisher:hover {
+  background-color: #0066cc;   /* dark blue hover */
+  box-shadow: 0 0 15px rgba(0,153,255,1);
+}      
+
+
+
+
+
+
+#heading {
+  text-align: center;
+  margin: 20px 5px;
+  font-size: 29px;
+  font-family: 'Times New Roman', serif;
+  font-weight: 600;
+  color: rgba(14, 41, 165, 0.975);
+}
+
+/* grid for 3 cards in row */
+#departments {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 0 30px;
+}
+
+/* common card design */
+.card {
+  border: 2px solid rgba(5, 106, 222, 0.836);
+  height: 250px;
+  text-align: center;
+  border-radius: 14px;
+  transition: all 0.4s ease;
+  padding: 15px;
+}
+
+.card img {
+  height: 67px;
+  width: 68px;
+  margin-top: 10px;
+}
+
+.card h3 {
+  font-size: 21px;
+  font-family: sans-serif;
+  font-weight: 500;
+  color: #00356B;
+  margin: 8px 0;
+}
+
+.card p {
+  font-size: 14px;
+  font-family: sans-serif;
+  font-weight: 500;
+  color: #666666;
+}
+
+.card button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgba(5, 106, 222, 0.836);
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.4s;
+}
+
+/* Different hover colors */
+.card1:hover { background: #007BFF; color: white; border: 1px solid white; }
+.card2:hover { background: #28A745; color: white; border: 1px solid white; }
+.card3:hover { background: #FFC107; color: black; border: 1px solid white; }
+.card4:hover { background: #DC3545; color: white; border: 1px solid white; }
+.card5:hover { background: #6F42C1; color: white; border: 1px solid white; }
+.card6:hover { background: #0c9e72; color: white; border: 1px solid white; }
+
+/* text & button color change on hover */
+.card:hover h3,
+.card:hover p { color: inherit; }
+
+.card:hover button {
+  background: white;
+  color: black;
+}
+
+
+
+
+
+
+.prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+      transition: 0.3s;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+    .next { right: 0; border-radius: 3px 0 0 3px; }
+    .prev:hover, .next:hover { background-color: rgba(0,0,0,0.6); }
+
+
+/* --- Enhanced Footer --- */
+    
+
+    .footer-main {
+    background: linear-gradient(135deg, #0d1b2a 0%, #1a237e 50%, #0d1b2a 100%);
+    color: #fff;
+    padding: 60px 0 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-about h3 {
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: 700;
+}
+    
+     .footer-about p {
+    line-height: 1.8;
+    opacity: 0.9;
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* ===== FOOTER SOCIAL ICONS - PLATFORM SPECIFIC COLORS ===== */
+.footer-social {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+/* Facebook - Blue */
+.footer-social a.facebook:hover {
+    background: #1877f2;
+    transform: translateY(-3px);
+}
+
+/* Instagram - Purple/Yellow Gradient */
+.footer-social a.instagram:hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    transform: translateY(-3px);
+}
+
+/* Twitter/X - Blue */
+.footer-social a.twitter:hover {
+    background: #1da1f2;
+    transform: translateY(-3px);
+}
+
+/* YouTube - Red */
+.footer-social a.youtube:hover {
+    background: #ff0000;
+    transform: translateY(-3px);
+}
+
+/* ===== FOOTER LINKS - CLEAN WITHOUT ARROWS ===== */
+.footer-links h4 {
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 12px;
+}
+
+.footer-links ul li a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-links ul li a:hover {
+    color: var(--accent-color);
+    padding-left: 5px;
+}
+/* ===== CONTACT INFO - CLICKABLE ===== */
+.contact-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-info li {
+    margin-bottom: 15px;
+}
+
+.contact-info li a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.contact-info li a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.contact-info li a i {
+    width: 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Phone - Green hover */
+.contact-info li a.phone:hover {
+    color: #25D366;
+}
+
+/* Email - Orange hover */
+.contact-info li a.email:hover {
+    color: #EA4335;
+}
+
+/* Location - Blue hover */
+.contact-info li a.location:hover {
+    color: #4285F4;
+}
+
+/* ===== FOOTER GALLERY SECTION - NEW ===== */
+.footer-gallery h4 {
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.gallery-grid a {
+    display: block;
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+}
+
+.gallery-grid a img {
+    width: 100%;
+    height: 70px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.gallery-grid a:hover img {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+.gallery-grid a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(26, 35, 126, 0.3);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.gallery-grid a:hover::after {
+    opacity: 1;
+}
+
+/* ===== FOOTER BOTTOM ===== */
+
+
+.footer-bottom {
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 50px;
+    text-align: center;
+    border-top:2px solid #ffd700;
+    
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.footer-bottom p i {
+    color: #ebe4e4;
+    margin: 0 5px;
+}
+
+    /* --- Responsive Design --- */
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 120px 0 80px;
+      }
+
+      .hero-title {
+        font-size: 2.5rem !important;
+      }
+
+      .navbar-brand {
+        font-size: 1.4rem;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .section-title h2 {
+        font-size: 2.2rem;
+      }
+
+      .about-img,
+      .contact-card {
+        margin-bottom: 30px;
+      }
+
+      .footer {
+        padding: 50px 0 20px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-title {
+        font-size: 2rem !important;
+      }
+
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .btn-apply {
+        padding: 12px 25px;
+        font-size: 0.95rem;
+      }
+    }
+ /* --- Loading Animation --- */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(255,255,255,0.3);
+      border-top: 4px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+
+/* Responsive */
+@media (max-width: 900px) {
+  #departments {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  #departments {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+  <!-- TOPBAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <i class="fas fa-graduation-cap"></i>
+      <span>Welcome to Government Polytechnic Nainital</span>
+    </div>
+    <div class="topbar-right">
+      <a href="tel:+919411158375"><i class="fas fa-phone"></i> +91 9411158375</a>
+      <a href="mailto:info@gpnainital.ac.in"><i class="fas fa-envelope"></i> info@gpnainital.ac.in</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header-area">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center flex-wrap">
+      
+      <div class="logo-section">
+        <div class="logo-box">
+          <img src="Government_Polytechnic_Nainital_logo.png" alt="College Logo">
+        </div>
+        <div class="logo-text">
+          <h4>Uttarakhand Government Institute Of Polytechnic</h4>
+          <span>Nainital | Established 1956</span>
+        </div>
+      </div>
+
+      <nav class="main-nav">
+        <a href="index.html" class="active"><i class="fas fa-home"></i> Home</a>
+        <a href="book.html"><i class="fas fa-book"></i> Books</a>
+        <a href="notes.html"><i class="fas fa-sticky-note"></i> Notes</a>
+        <a href="videos.html"><i class="fas fa-video"></i> Videos</a>
+        <a href="audios.html"><i class="fas fa-headphones"></i> Audios</a>
+        <a href="brochure.html"><i class="fas fa-users"></i> Brochure</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="announcement.html" class="new-btn">
+          <i class="fas fa-bullhorn"></i> NEW
+        </a>
+      </nav>
+
+    </div>
+  </div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-container">
+    <div class="marquee-content">
+      <span><i class="fas fa-graduation-cap"></i> Welcome to Digital Audio Video Book Platform</span>
+      <span><i class="fas fa-book"></i> Access Books, Notes & Study Materials</span>
+      <span><i class="fas fa-video"></i> Watch Video Lectures Anytime</span>
+      <span><i class="fas fa-headphones"></i> Listen to Audio Lectures</span>
+      <span><i class="fas fa-university"></i> Government Polytechnic Nainital</span>
+
+      <!-- repeated for smooth loop -->
+      <span><i class="fas fa-graduation-cap"></i> Welcome to Digital Audio Video Book Platform</span>
+      <span><i class="fas fa-book"></i> Access Books, Notes & Study Materials</span>
+      <span><i class="fas fa-video"></i> Watch Video Lectures Anytime</span>
+      <span><i class="fas fa-headphones"></i> Listen to Audio Lectures</span>
+      <span><i class="fas fa-university"></i> Government Polytechnic Nainital</span>
+    </div>
+  </div>
+</div>
+
+
+      
+    
+
+  <nav class="nav-section">  
+    <a href="officestaff.html">Staff</a>       
+    <a href="faculty.html">Faculty</a>              
+  </nav>           
+
+
+
+
+
+    <h1 id="heading" style="margin-bottom: 2%;font-size: 300%;">COURSES</h1>
+    <p style="text-align: center;font-family: 'Times New Roman', Times, serif;font-weight: 500;font-size: large;">Our institute offers six professional diploma courses through this brochure section.
+These courses focus on skill development, practical learning, and career building.</p>
+<p style="text-align: center;font-family: 'Times New Roman', Times, serif;font-weight: 500;font-size: large;">Explore each program to find the right course that matches your interest and future goals.</p>
+
+
+    <div id="departments">
+        <div class="card card1">
+            <img src="https://gpdehradun.org.in/wp-content/uploads/2025/02/engineering.png" alt="">
+            <h3>Civil Engineering</h3>
+            <p>Diploma program in Civil Engineering</p>
+            <button onclick="window.location.href='civil.html'">
+                Read More
+            </button>
+
+        </div>
+
+        <div class="card card2">
+            <img src="https://gpdehradun.org.in/wp-content/uploads/2025/02/setting.png" alt="">
+            <h3>Information Technology</h3>
+            <p>Diploma Program in IT</p>
+            <button onclick="window.location.href='it.html'">Read More</button>
+        </div>
+
+        <div class="card card3">
+            <img src="https://gpdehradun.org.in/wp-content/uploads/2025/02/mechanic.png" alt="">
+            <h3>Mechanical Engineering</h3>
+            <p>Diploma Program in Mechanical Engineering</p>
+            <button onclick="window.location.href='mech.html'">Read More</button>
+        </div>
+
+        <div class="card card4">
+            <img src="https://gpdehradun.org.in/wp-content/uploads/2025/02/automated-engineering.png" alt="">
+            <h3>Electronics Engineering</h3>
+            <p>Diploma program in Electronics Engineering</p>
+            <button onclick="window.location.href='electronics.html'">Read More</button>
+        </div>
+
+        <div class="card card5">
+            <img src="https://gpdehradun.org.in/wp-content/uploads/2025/02/drugstore.png" alt="">
+            <h3>Pharmacy</h3>
+            <p>Diploma program in Pharmacy</p>
+            <button onclick="window.location.href='pharmacy.html'">Read More</button>
+        </div>
+
+        <div class="card card6">
+            <img src="https://gpdehradun.org.in/wp-content/uploads/2025/06/e-images-1.jpg" alt="">
+            <h3>Electrical Engineering</h3>
+            <p>Diploma Program in Electrical Engineering</p>
+            <button onclick="window.location.href='electrical.html'">Read More</button>
+        </div>
+    </div>
+    
+    <footer class="footer-main">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- About -->
+      <div class="footer-about">
+        <h3>Government Polytechnic Nainital</h3>
+        <p>
+          We are a premier technical institute in Uttarakhand, committed to providing quality education and making learning resources accessible to all students through our Digital Audio Video Book Platform.
+        </p>
+
+        <div class="footer-social">
+          <a href="https://facebook.com" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://instagram.com" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://twitter.com" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://youtube.com" class="youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="book.html">Books</a></li>
+          <li><a href="notes.html">Notes</a></li>
+          <li><a href="videos.html">Videos</a></li>
+          <li><a href="videos.html">staff</a></li>
+          <li><a href="videos.html">faculty</a></li>
+          <li><a href="videos.html">department</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="audios.html">Audios</a></li>
+          <li><a href="brochure.html">Brochure</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html">Feedback</a></li>
+          <li><a href="announcement.html">New Announcement</a></li>
+        </ul>
+      </div>
+
+      <!-- Gallery -->
+      <div class="footer-gallery">
+        <h4>Photo Gallery</h4>
+        <div class="gallery-grid">
+          <a href="images/college/cp12.jpg" target="_blank"><img src="images/college/cp12.jpg"></a>
+          <a href="images/college/cp2.jpg" target="_blank"><img src="images/college/cp2.jpg"></a>
+          <a href="images/college/cp3.jpg" target="_blank"><img src="images/college/cp3.jpg"></a>
+          <a href="images/college/cp4.jpg" target="_blank"><img src="images/college/cp4.jpg"></a>
+          <a href="images/college/CP11.jpg" target="_blank"><img src="images/college/CP11.jpg"></a>
+          <a href="images/college/cp6.jpg" target="_blank"><img src="images/college/cp6.jpg"></a>
+          <a href="images/college/cp7.jpg" target="_blank"><img src="images/college/cp7.jpg"></a>
+          <a href="images/college/cp9.jpg" target="_blank"><img src="images/college/cp9.jpg"></a>
+          <a href="images/college/cp10.jpg" target="_blank"><img src="images/college/cp10.jpg"></a>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-links">
+        <h4>Contact Info</h4>
+        <ul class="contact-info">
+          <li><a href="tel:+919411158375" class="phone"><i class="fas fa-phone"></i> +91 9411158375</a></li>
+          <li><a href="mailto:info@gpnainital.ac.in" class="email"><i class="fas fa-envelope"></i> info@gpnainital.ac.in</a></li>
+          <li><a href="https://maps.google.com/?q=Government+Polytechnic+Nainital" target="_blank" class="location"><i class="fas fa-map-marker-alt"></i> Nainital, Uttarakhand</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="footer-bottom">
+    <p>
+      <i class="fas fa-copyright"></i>
+      2025 Digital Audio Video Book | Government Polytechnic Nainital. All Rights Reserved.
+    </p>
+  </div>
+</footer>
+    
+
+
+
+
+
+</body>
+</html>
