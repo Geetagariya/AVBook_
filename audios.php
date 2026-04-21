@@ -15,11 +15,11 @@ if(empty($categories)) {
 }
 
 function getAudios($conn, $category) {
-    $stmt = $conn->prepare("SELECT * FROM audios WHERE category=? ORDER BY created_at DESC");
+    $stmt = mysqli_prepare($conn, "SELECT * FROM audios WHERE category=? ORDER BY created_at DESC");
     if(!$stmt) return false;
-    $stmt->bind_param("s", $category);
-    $stmt->execute();
-    return $stmt->get_result();
+    mysqli_stmt_bind_param($stmt, "s", $category);
+    mysqli_stmt_execute($stmt);
+    return mysqli_stmt_get_result($stmt);
 }
 ?>
 

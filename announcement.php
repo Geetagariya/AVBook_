@@ -554,7 +554,7 @@ html {
                     <div class="announcement-meta">
                         <span><i class="fas fa-user"></i> <?= htmlspecialchars($row['added_by']) ?></span>
                         <span><i class="fas fa-eye"></i> <?= $row['views'] ?> Views</span>
-                        <span><i class="fas fa-clock"></i> <?= date('d M Y â€¢ h:i A', strtotime($row['created_at'])) ?></span>
+                        <span><i class="fas fa-clock"></i> <?= date('d M Y', strtotime($row['created_at'])) ?> &bull; <?= date('h:i A', strtotime($row['created_at'])) ?></span>
                         <?php if($row['download_link']): ?>
                         <span><i class="fas fa-download"></i> <a href="<?= htmlspecialchars($row['download_link']) ?>" style="color:var(--secondary-color);">Download</a></span>
                         <?php endif; ?>
@@ -588,7 +588,7 @@ html {
                     <div class="announcement-meta">
                         <span><i class="fas fa-user"></i> <?= htmlspecialchars($row['added_by']) ?></span>
                         <span><i class="fas fa-eye"></i> <?= $row['views'] ?> Views</span>
-                        <span><i class="fas fa-clock"></i> Added: <?= date('d M Y â€¢ h:i A', strtotime($row['created_at'])) ?></span>
+                        <span><i class="fas fa-clock"></i> Added: <?= date('d M Y', strtotime($row['created_at'])) ?> &bull; <?= date('h:i A', strtotime($row['created_at'])) ?></span>
                         <?php if($row['download_link']): ?>
                         <span><i class="fas fa-download"></i> <a href="<?= htmlspecialchars($row['download_link']) ?>" style="color:var(--secondary-color);">Download</a></span>
                         <?php endif; ?>

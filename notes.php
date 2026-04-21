@@ -6,18 +6,18 @@ if (!$conn) {
 
 function getData($conn, $branch, $semester = '', $type = '', $year = ''){
     if($year != ''){
-        $stmt = $conn->prepare("SELECT * FROM notes 
+        $stmt = mysqli_prepare($conn, "SELECT * FROM notes 
         WHERE branch=? AND type=? AND year=? 
         ORDER BY created_at DESC");
-        $stmt->bind_param("sss", $branch, $type, $year);
+        mysqli_stmt_bind_param($stmt, "sss", $branch, $type, $year);
     } else{
-        $stmt = $conn->prepare("SELECT * FROM notes 
+        $stmt = mysqli_prepare($conn, "SELECT * FROM notes 
         WHERE branch=? AND semester=? AND type=? 
         ORDER BY created_at DESC");
-        $stmt->bind_param("sss", $branch, $semester, $type);
+        mysqli_stmt_bind_param($stmt, "sss", $branch, $semester, $type);
     }
-    $stmt->execute();
-    return $stmt->get_result();
+    mysqli_stmt_execute($stmt);
+    return mysqli_stmt_get_result($stmt);
 }
 ?>
 
