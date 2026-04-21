@@ -1,4 +1,4 @@
-﻿<?php include 'db.php'; ?>
+<?php include 'db.php';
 
 // Fetch all audios
 $query = "SELECT * FROM audios ORDER BY category ASC";

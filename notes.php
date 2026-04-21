@@ -1,4 +1,4 @@
-﻿<?php include 'db.php'; ?>
+<?php include 'db.php';
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
