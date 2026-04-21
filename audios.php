@@ -1,5 +1,17 @@
 <?php include 'db.php';
 
+// Fetch all distinct categories from DB
+$cat_result = mysqli_query($conn, "SELECT DISTINCT category FROM audios ORDER BY category ASC");
+$categories = [];
+while($cat_row = mysqli_fetch_assoc($cat_result)){
+    $categories[] = $cat_row['category'];
+}
+
+// If no categories yet, show demo
+if(empty($categories)) {
+    $categories = ['C Language'];
+}
+
 function getAudios($conn, $category) {
     $stmt = $conn->prepare("SELECT * FROM audios WHERE category=? ORDER BY created_at DESC");
     $stmt->bind_param("s", $category);
@@ -413,23 +425,12 @@ body{font-family:'Poppins',sans-serif;background:#f5f7fa;overflow-x:hidden;line-
 <section class="content-section">
     <div class="content-container">
 
-<?php
-$branches = [
-    ['key'=>'first_year',  'label'=>'First Year',              'icon'=>'fa-book-reader'],
-    ['key'=>'IT',          'label'=>'Information Technology',   'icon'=>'fa-laptop-code'],
-    ['key'=>'Civil',       'label'=>'Civil Engineering',        'icon'=>'fa-hard-hat'],
-    ['key'=>'Electrical',  'label'=>'Electrical Engineering',   'icon'=>'fa-bolt'],
-    ['key'=>'Electronics', 'label'=>'Electronic Engineering',   'icon'=>'fa-microchip'],
-    ['key'=>'Mechanical',  'label'=>'Mechanical Engineering',   'icon'=>'fa-cogs'],
-    ['key'=>'Pharmacy',    'label'=>'Pharmacy',                 'icon'=>'fa-pills'],
-];
-
-foreach($branches as $branch):
-    $result = getAudios($conn, $branch['key']);
+<?php foreach($categories as $category):
+    $result = getAudios($conn, $category);
 ?>
         <div class="accordion">
             <div class="accordion-header" onclick="toggleAcc(this)">
-                <span><i class="fas <?php echo $branch['icon']; ?>"></i>&nbsp; <?php echo $branch['label']; ?></span>
+                <span><i class="fas fa-headphones"></i>&nbsp; <?php echo htmlspecialchars($category); ?></span>
                 <span class="toggle-icon">+</span>
             </div>
             <div class="accordion-content">
@@ -444,7 +445,7 @@ foreach($branches as $branch):
                 </div>
 <?php endwhile; ?>
 <?php else: ?>
-                <p class="no-audio">No audio uploaded yet for this branch.</p>
+                <p class="no-audio">No audio uploaded yet in this category.</p>
 <?php endif; ?>
             </div>
         </div>
