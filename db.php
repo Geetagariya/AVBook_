@@ -12,9 +12,9 @@
 // ============================================================
 
 define('DB_HOST', 'localhost');
-define('DB_USER', 'avbook');       // ← Change to your cPanel MySQL user
-define('DB_PASS', 'YOUR_DB_PASSWORD');   // ← Change to your MySQL user password
-define('DB_NAME', 'gariy_avbook_db');    // ← Change to your cPanel database name
+define('DB_USER', 'vjxrlbys_av_book_us');
+define('DB_PASS', '864920BGYS!');
+define('DB_NAME', 'vjxrlbys_avbook_db');
 
 $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
