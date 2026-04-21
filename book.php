@@ -1,4 +1,4 @@
-﻿<?php include 'db.php'; ?>
+<?php include 'db.php';
 
 $current_branch = isset($_GET['branch']) ? $_GET['branch'] : 'IT';
 
