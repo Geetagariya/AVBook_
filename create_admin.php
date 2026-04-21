@@ -1,13 +1,15 @@
 <?php
 session_start();
+include 'db.php';
 
-// only logged-in admin can access
-if(!isset($_SESSION['admin'])){
+// Allow access ONLY if no admin exists yet (first-time setup)
+// OR if already logged in as admin
+$admin_count = mysqli_query($conn, "SELECT COUNT(*) as cnt FROM admin");
+$row = mysqli_fetch_assoc($admin_count);
+if($row['cnt'] > 0 && !isset($_SESSION['admin'])){
     header("Location: admin_login.php");
     exit();
 }
-
-include 'db.php';
 
 
 $message = "";
