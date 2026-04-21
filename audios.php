@@ -1,10 +1,12 @@
 <?php include 'db.php';
 
-// Fetch all distinct categories from DB
-$cat_result = mysqli_query($conn, "SELECT DISTINCT category FROM audios ORDER BY category ASC");
+// Fetch all distinct categories from DB (with error handling)
 $categories = [];
-while($cat_row = mysqli_fetch_assoc($cat_result)){
-    $categories[] = $cat_row['category'];
+$cat_result = mysqli_query($conn, "SELECT DISTINCT category FROM audios ORDER BY category ASC");
+if($cat_result && mysqli_num_rows($cat_result) > 0) {
+    while($cat_row = mysqli_fetch_assoc($cat_result)){
+        $categories[] = $cat_row['category'];
+    }
 }
 
 // If no categories yet, show demo
@@ -14,6 +16,7 @@ if(empty($categories)) {
 
 function getAudios($conn, $category) {
     $stmt = $conn->prepare("SELECT * FROM audios WHERE category=? ORDER BY created_at DESC");
+    if(!$stmt) return false;
     $stmt->bind_param("s", $category);
     $stmt->execute();
     return $stmt->get_result();
@@ -434,7 +437,7 @@ body{font-family:'Poppins',sans-serif;background:#f5f7fa;overflow-x:hidden;line-
                 <span class="toggle-icon">+</span>
             </div>
             <div class="accordion-content">
-<?php if(mysqli_num_rows($result) > 0): ?>
+<?php if($result && mysqli_num_rows($result) > 0): ?>
 <?php while($audio = mysqli_fetch_assoc($result)): ?>
                 <div class="audio-item">
                     <h4><i class="fas fa-headphones" style="color:var(--secondary-color);margin-right:8px"></i><?php echo htmlspecialchars($audio['title']); ?></h4>
