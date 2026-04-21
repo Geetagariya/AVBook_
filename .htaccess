@@ -1,30 +1,6 @@
 Options -Indexes
-
-# ============================================================
-# Block direct browser access to sensitive admin-only files
-# ============================================================
-<FilesMatch "^(create_admin\.php|create_hash\.php|notesbackup\.php|practice\.php|fix_db\.ps1|fix_remaining\.ps1)$">
-    Require all denied
-</FilesMatch>
-
-# ============================================================
-# Security Headers
-# ============================================================
-<IfModule mod_headers.c>
-    Header set X-Content-Type-Options "nosniff"
-    Header set X-Frame-Options "SAMEORIGIN"
-    Header set X-XSS-Protection "1; mode=block"
-    Header set Referrer-Policy "strict-origin-when-cross-origin"
-</IfModule>
-
-# ============================================================
-# Prevent directory listing in upload folders
-# ============================================================
-<IfModule mod_autoindex.c>
-    IndexIgnore *
-</IfModule>
-
-# ============================================================
-# UTF-8 encoding
-# ============================================================
 AddDefaultCharset UTF-8
+
+# === TEMPORARY DEBUG - REMOVE AFTER FIXING ===
+php_flag display_errors on
+php_value error_reporting E_ALL

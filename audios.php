@@ -397,7 +397,7 @@ body{font-family:'Poppins',sans-serif;background:#f5f7fa;overflow-x:hidden;line-
 <span><i class="fas fa-book"></i> Access Books, Notes & Study Materials</span>
 <span><i class="fas fa-video"></i> Watch Video Lectures Anytime</span>
 <span><i class="fas fa-headphones"></i> Listen to Audio Lectures</span>
-<span><i-university"></i> Government Polytechnic N class="fas faainital</span>
+<span><i class="fas fa-university"></i> Government Polytechnic Nainital</span>
 <span><i class="fas fa-graduation-cap"></i> Welcome to Digital Audio Video Book Platform</span>
 <span><i class="fas fa-book"></i> Access Books, Notes & Study Materials</span>
 <span><i class="fas fa-video"></i> Watch Video Lectures Anytime</span>
