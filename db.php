@@ -12,7 +12,7 @@
 // ============================================================
 
 define('DB_HOST', 'localhost');
-define('DB_USER', 'gariy_avbook');       // ← Change to your cPanel MySQL user
+define('DB_USER', 'avbook');       // ← Change to your cPanel MySQL user
 define('DB_PASS', 'YOUR_DB_PASSWORD');   // ← Change to your MySQL user password
 define('DB_NAME', 'gariy_avbook_db');    // ← Change to your cPanel database name
 
