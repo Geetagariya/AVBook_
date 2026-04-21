@@ -1,5 +1,4 @@
 <?php include 'db.php';
-<?php
 $result = mysqli_query($conn, "SELECT * FROM videos ORDER BY id DESC");
 ?>
 
