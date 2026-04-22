@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 include 'db.php';
 if (!isset($_SESSION['admin'])) {
@@ -138,7 +138,7 @@ $total_books = mysqli_num_rows($result);
                         <td><?php echo htmlspecialchars($row['author']); ?></td>
                         <td><span style="background:rgba(30,60,114,0.2);padding:6px 14px;border-radius:20px;color:#1e3c72;font-weight:500;"><?php echo htmlspecialchars($row['branch']); ?></span></td>
                         <td><a href="PDF/book_pdf/<?php echo $row['branch']; ?>/<?php echo $row['file']; ?>" target="_blank" class="pdf-link"><i class="fas fa-eye"></i> View</a></td>
-                        <td><?php if($row['image']!=''): ?><img src="images/books/<?php echo $row['image']; ?>" class="book-image"><?php else: ?><span style="color:#9ca3af;font-style:italic;">No Image</span><?php endif; ?></td>
+                        <td><?php if($row['image']!=''): ?><img src="<?php echo $row['image']; ?>" class="book-image" onerror="this.src='images/books/default.jpg'"><?php else: ?><span style="color:#9ca3af;font-style:italic;">No Image</span><?php endif; ?></td>
 						<td>
     <!-- EDIT BUTTON -->
     <a href="edit_book.php?id=<?php echo $row['id']; ?>" 
