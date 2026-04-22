@@ -1945,17 +1945,45 @@ accordions.forEach(acc => {
     });
 });
 
-// ==================== NEW SEARCH FUNCTIONALITY ====================
-document.getElementById('notesSearch').addEventListener('input', function() {
-    const searchTerm = this.value.toLowerCase().trim();
-    const allLinks = document.querySelectorAll('.accordion-content ul li a');
-    
-    allLinks.forEach(link => {
-        const text = link.textContent.toLowerCase();
-        if (searchTerm === '' || text.includes(searchTerm)) {
-            link.parentElement.style.display = '';
+// ==================== FIXED SEARCH FUNCTIONALITY ====================
+document.getElementById('notesSearch').addEventListener('input', function () {
+    const q = this.value.toLowerCase().trim();
+
+    document.querySelectorAll('.accordion').forEach(function (accordion) {
+        const content  = accordion.querySelector('.accordion-content');
+        const symbol   = accordion.querySelector('.accordion-header span:last-child');
+        const allLinks = accordion.querySelectorAll('a');
+
+        if (q === '') {
+            // Reset: close all accordions, show all items
+            accordion.style.display = 'block';
+            content.style.display   = 'none';
+            symbol.textContent      = '+';
+            accordion.querySelectorAll('li').forEach(li => li.style.display = '');
+            accordion.querySelectorAll('details').forEach(d => d.removeAttribute('open'));
         } else {
-            link.parentElement.style.display = 'none';
+            let hasMatch = false;
+
+            allLinks.forEach(function (link) {
+                const text  = link.textContent.toLowerCase();
+                const li    = link.closest('li');
+                const match = text.includes(q);
+
+                if (li) li.style.display = match ? '' : 'none';
+                if (match) hasMatch = true;
+            });
+
+            if (hasMatch) {
+                // Show and open the accordion
+                accordion.style.display = 'block';
+                content.style.display   = 'block';
+                symbol.textContent      = '−';
+                // Open all <details> inside so nested items are visible
+                accordion.querySelectorAll('details').forEach(d => d.setAttribute('open', ''));
+            } else {
+                // Hide entire accordion — no matches
+                accordion.style.display = 'none';
+            }
         }
     });
 });
