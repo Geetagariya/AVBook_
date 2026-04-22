@@ -1188,7 +1188,7 @@ html {
           <div class="book-image-container">
             <span class="book-badge">PDF</span>
             
-			<img src="images/books/IT/<?php echo !empty($row['image']) ? $row['image'] : 'default.jpg'; ?>">
+			<img src="<?php echo !empty($row['image']) ? $row['image'] : 'images/books/default.jpg'; ?>" alt="Book Cover" onerror="this.src='images/books/default.jpg'">
           </div>
           <div class="book-content">
             <h3><?php echo $row['title']; ?></h3>
@@ -1234,7 +1234,7 @@ mysqli_query($conn, "UPDATE announcements SET views = views + 1 WHERE category='
         <div class="book-card">
           <div class="book-image-container">
             <span class="book-badge">PDF</span>
-            <img src="images/books/Civil/<?php echo !empty($row['image']) ? $row['image'] : 'default.jpg'; ?>">
+            <img src="<?php echo !empty($row['image']) ? $row['image'] : 'images/books/default.jpg'; ?>" alt="Book Cover" onerror="this.src='images/books/default.jpg'">
           </div>
           <div class="book-content">
             <h3><?php echo $row['title']; ?></h3>
@@ -1270,7 +1270,7 @@ mysqli_query($conn, "UPDATE announcements SET views = views + 1 WHERE category='
         <div class="book-card">
           <div class="book-image-container">
             <span class="book-badge">PDF</span>
-            <img src="images/books/Mechanical/<?php echo !empty($row['image']) ? $row['image'] : 'default.jpg'; ?>">
+            <img src="<?php echo !empty($row['image']) ? $row['image'] : 'images/books/default.jpg'; ?>" alt="Book Cover" onerror="this.src='images/books/default.jpg'">
           </div>
           <div class="book-content">
             <h3><?php echo $row['title']; ?></h3>
@@ -1306,7 +1306,7 @@ mysqli_query($conn, "UPDATE announcements SET views = views + 1 WHERE category='
         <div class="book-card">
           <div class="book-image-container">
             <span class="book-badge">PDF</span>
-            <img src="images/books/Electrical/<?php echo !empty($row['image']) ? $row['image'] : 'default.jpg'; ?>">
+            <img src="<?php echo !empty($row['image']) ? $row['image'] : 'images/books/default.jpg'; ?>" alt="Book Cover" onerror="this.src='images/books/default.jpg'">
           </div>
           <div class="book-content">
             <h3><?php echo $row['title']; ?></h3>
@@ -1342,7 +1342,7 @@ mysqli_query($conn, "UPDATE announcements SET views = views + 1 WHERE category='
         <div class="book-card">
           <div class="book-image-container">
             <span class="book-badge">PDF</span>
-            <img src="images/books/Electronic/<?php echo !empty($row['image']) ? $row['image'] : 'default.jpg'; ?>">
+            <img src="<?php echo !empty($row['image']) ? $row['image'] : 'images/books/default.jpg'; ?>" alt="Book Cover" onerror="this.src='images/books/default.jpg'">
           </div>
           <div class="book-content">
             <h3><?php echo $row['title']; ?></h3>
@@ -1378,7 +1378,7 @@ mysqli_query($conn, "UPDATE announcements SET views = views + 1 WHERE category='
         <div class="book-card">
           <div class="book-image-container">
             <span class="book-badge">PDF</span>
-            <img src="images/books/Pharmacy/<?php echo !empty($row['image']) ? $row['image'] : 'default.jpg'; ?>">
+            <img src="<?php echo !empty($row['image']) ? $row['image'] : 'images/books/default.jpg'; ?>" alt="Book Cover" onerror="this.src='images/books/default.jpg'">
           </div>
           <div class="book-content">
             <h3><?php echo $row['title']; ?></h3>
