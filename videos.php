@@ -706,7 +706,7 @@ body { font-family: 'Inter', sans-serif; background: #f5f7fa; overflow-x: hidden
 
 
 
-<?php include 'db.php'; 
+<?php
 $sql = "SELECT * FROM videos ORDER BY id DESC";
 $result = mysqli_query($conn, $sql);
 
@@ -773,7 +773,7 @@ while($row = mysqli_fetch_assoc($result)) {
 
 
 
-<?php include 'db.php'; 
+<?php
 $sql = "SELECT * FROM videos WHERE category='engineering' ORDER BY id DESC";
 $result = mysqli_query($conn, $sql);
 
@@ -847,7 +847,7 @@ while($row = mysqli_fetch_assoc($result)) {
 
 
 
-<?php include 'db.php'; 
+<?php
 $sql = "SELECT * FROM videos WHERE category='diploma' ORDER BY id DESC";
 $result = mysqli_query($conn, $sql);
 
@@ -924,7 +924,7 @@ while($row = mysqli_fetch_assoc($result)) {
 
 
 
-<?php include 'db.php'; 
+<?php
 $sql = "SELECT * FROM videos WHERE category='others' ORDER BY id DESC";
 $result = mysqli_query($conn, $sql);
 

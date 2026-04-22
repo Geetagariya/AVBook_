@@ -4,15 +4,14 @@ $success = false;
 
 if(isset($_POST['submit']))
 {
-    $fname = $_POST['first_name'] ?? '';
-    $lname = $_POST['last_name'] ?? '';
-    $mobile = $_POST['mobile'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $address = $_POST['address'] ?? '';
-    $message = $_POST['message'] ?? '';
+    $name    = mysqli_real_escape_string($conn, ($_POST['first_name'] ?? '') . ' ' . ($_POST['last_name'] ?? ''));
+    $email   = mysqli_real_escape_string($conn, $_POST['email'] ?? '');
+    $phone   = mysqli_real_escape_string($conn, $_POST['mobile'] ?? '');
+    $subject = mysqli_real_escape_string($conn, $_POST['address'] ?? 'General Inquiry');
+    $message = mysqli_real_escape_string($conn, $_POST['message'] ?? '');
 
-    $query = "INSERT INTO contact(first_name,last_name,mobile,email,address,message)
-              VALUES('$fname','$lname','$mobile','$email','$address','$message')";
+    $query = "INSERT INTO contact(name, email, phone, subject, message)
+              VALUES('$name','$email','$phone','$subject','$message')";
 
     if(mysqli_query($conn,$query))
     {
@@ -704,7 +703,7 @@ body{font-family:'Poppins',sans-serif;background:#f5f7fa;overflow-x:hidden;line-
 <span><i class="fas fa-book"></i> Access Books, Notes & Study Materials</span>
 <span><i class="fas fa-video"></i> Watch Video Lectures Anytime</span>
 <span><i class="fas fa-headphones"></i> Listen to Audio Lectures</span>
-<span><i-university"></i> Government Polytechnic N class="fas faainital</span>
+<span><i class="fas fa-university"></i> Government Polytechnic Nainital</span>
 <span><i class="fas fa-graduation-cap"></i> Welcome to Digital Audio Video Book Platform</span>
 <span><i class="fas fa-book"></i> Access Books, Notes & Study Materials</span>
 <span><i class="fas fa-video"></i> Watch Video Lectures Anytime</span>
