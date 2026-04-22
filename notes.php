@@ -1,4 +1,4 @@
-<?php include 'db.php';
+﻿<?php include 'db.php';
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -253,16 +253,20 @@ function getData($conn, $branch, $semester = '', $type = '', $year = ''){
         }
 
         summary::before {
-            content: "ðŸ“‚";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            content: "\f07b";
             position: absolute;
             left: 12px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 18px;
+            font-size: 16px;
+            color: var(--primary-color);
         }
 
         details[open] summary::before {
-            content: "ðŸ“–";
+            content: "\f07c";
+            color: var(--secondary-color);
         }
 
         /* ===== FOOTER ===== */
