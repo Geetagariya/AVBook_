@@ -13,67 +13,47 @@ $row = mysqli_fetch_assoc($result);
 
 $update_status = '';
 
-	if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $title   = trim($_POST['title']);
-    $author  = trim($_POST['author'] ?? '');
-    $branch  = trim($_POST['branch']);
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $title  = mysqli_real_escape_string($conn, trim($_POST['title']));
+    $author = mysqli_real_escape_string($conn, trim($_POST['author'] ?? ''));
+    $branch = mysqli_real_escape_string($conn, trim($_POST['branch']));
 
     // PDF Upload
     if(!empty($_FILES['file']['name'])){
-        $file = $_FILES['file']['name'];
-        $temp = $_FILES['file']['tmp_name'];
-        $target_dir = "PDF/book_pdf/".$branch."/";
-        
-        if(!file_exists($target_dir)){
-            mkdir($target_dir, 0777, true);
-        }
-        
-        // Delete old PDF
-		if(!empty($row['file']) && file_exists($row['file'])){
-    unlink($row['file']);
-}
-		
-        
-        
-        move_uploaded_file($temp, $target_dir.$file);
-        $file_path = $target_dir . $file;
+        $file    = $_FILES['file']['name'];
+        $temp    = $_FILES['file']['tmp_name'];
+        $pdf_dir = "PDF/book_pdf/$branch/";
+        if(!file_exists($pdf_dir)) mkdir($pdf_dir, 0777, true);
+        move_uploaded_file($temp, $pdf_dir.$file);
+        $file_path = $pdf_dir.$file;
     } else {
         $file_path = $row['file'];
     }
 
     // Image Upload
-  if(!empty($_FILES['file']['name'])){
-    $file_name = $_FILES['file']['name'];
-    $temp = $_FILES['file']['tmp_name'];
-
-    $target_dir = "PDF/book_pdf/$branch/";
-
-    if(!file_exists($target_dir)){
-        mkdir($target_dir, 0777, true);
-    }
-
-    // delete old pdf
-    if(!empty($row['file']) && file_exists($row['file'])){
-        unlink($row['file']);
-    }
-
-    if(move_uploaded_file($temp, $target_dir.$file_name)){
-        $file_path = $target_dir . $file_name; // FULL PATH
+    if(!empty($_FILES['image']['name'])){
+        $image_name = $_FILES['image']['name'];
+        $img_tmp    = $_FILES['image']['tmp_name'];
+        $img_folder = "images/books/$branch/";
+        if(!file_exists($img_folder)) mkdir($img_folder, 0777, true);
+        if(move_uploaded_file($img_tmp, $img_folder.$image_name)){
+            $image_path = $img_folder.$image_name;
+        } else {
+            $image_path = $row['image'];
+        }
     } else {
-        $file_path = $row['file'];
+        $image_path = $row['image'];
     }
 
-} else {
-    $file_path = $row['file'];
-}
-
+    $file_path  = mysqli_real_escape_string($conn, $file_path);
+    $image_path = mysqli_real_escape_string($conn, $image_path);
 
     $query = "UPDATE books SET
-        title = '$title',
+        title  = '$title',
         author = '$author',
         branch = '$branch',
-        file = '$file_path',
-        image = '$image_path'
+        file   = '$file_path',
+        image  = '$image_path'
         WHERE id = $id";
 
     if(mysqli_query($conn, $query)){
@@ -83,7 +63,6 @@ $update_status = '';
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,68 +73,16 @@ $update_status = '';
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
     <style>
-        body {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
-            padding: 2rem 0;
-        }
-        .form-card {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            padding: 3rem;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-            border: 1px solid #e2e8f0;
-        }
-        .form-label {
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 0.75rem;
-        }
-        .form-control, .form-select {
-            padding: 1rem 1.25rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 16px;
-            background: #f8fafc;
-        }
-        .form-control:focus, .form-select:focus {
-            border-color: #3b82f6;
-            background: white;
-            box-shadow: 0 0 0 0.2rem rgba(59,130,246,0.1);
-        }
-        .file-upload-area {
-            border: 2px dashed #cbd5e1;
-            border-radius: 16px;
-            padding: 2.5rem;
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        .file-upload-area:hover {
-            border-color: #3b82f6;
-            background: #f0f9ff;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            border: none;
-            padding: 1.25rem;
-            border-radius: 16px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            width: 100%;
-            margin-top: 2rem;
-        }
-        .preview-box {
-            background: #f8fafc;
-            padding: 1rem;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            text-align: center;
-        }
+        body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); font-family: 'Inter', sans-serif; min-height: 100vh; padding: 2rem 0; }
+        .form-card { max-width: 900px; margin: 0 auto; background: white; padding: 3rem; border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; }
+        .form-label { font-weight: 600; color: #1e293b; margin-bottom: 0.75rem; }
+        .form-control, .form-select { padding: 1rem 1.25rem; border: 2px solid #e2e8f0; border-radius: 16px; background: #f8fafc; }
+        .form-control:focus, .form-select:focus { border-color: #3b82f6; background: white; box-shadow: 0 0 0 0.2rem rgba(59,130,246,0.1); }
+        .file-upload-area { border: 2px dashed #cbd5e1; border-radius: 16px; padding: 2.5rem; text-align: center; transition: all 0.3s; cursor: pointer; }
+        .file-upload-area:hover { border-color: #3b82f6; background: #f0f9ff; }
+        .btn-primary { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); border: none; padding: 1.25rem; border-radius: 16px; font-size: 1.1rem; font-weight: 600; width: 100%; margin-top: 2rem; }
+        .preview-box { background: #f8fafc; padding: 1rem; border-radius: 12px; border: 1px solid #e2e8f0; text-align: center; }
     </style>
 </head>
 <body>
@@ -168,19 +95,19 @@ $update_status = '';
                 <div class="row">
                     <div class="col-md-8 mb-4">
                         <label class="form-label">Book Title *</label>
-                        <input type="text" name="title" class="form-control" 
+                        <input type="text" name="title" class="form-control"
                                value="<?= htmlspecialchars($row['title']) ?>" required>
                     </div>
                     <div class="col-md-4 mb-4">
                         <label class="form-label">Author (Optional)</label>
-                        <input type="text" name="author" class="form-control" 
+                        <input type="text" name="author" class="form-control"
                                value="<?= htmlspecialchars($row['author'] ?? '') ?>">
                     </div>
                 </div>
 
                 <div class="mb-4">
                     <label class="form-label">Branch *</label>
-                    <input type="text" name="branch" class="form-control" 
+                    <input type="text" name="branch" class="form-control"
                            value="<?= htmlspecialchars($row['branch']) ?>" required>
                 </div>
 
@@ -190,15 +117,14 @@ $update_status = '';
                         <div class="preview-box">
                             <strong>Current PDF:</strong><br>
                             <small><?= htmlspecialchars($row['file']) ?></small>
-							
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="preview-box">
                             <strong>Current Image:</strong><br>
                             <?php if($row['image']): ?>
-							<img src="<?= htmlspecialchars($row['image']) ?>" 
-                                     style="max-height: 120px; border-radius: 8px;" alt="Cover">
+                            <img src="<?= htmlspecialchars($row['image']) ?>"
+                                 style="max-height: 120px; border-radius: 8px;" alt="Cover">
                             <?php else: ?>
                                 <small>No Image</small>
                             <?php endif; ?>
@@ -216,7 +142,6 @@ $update_status = '';
                             <input type="file" name="file" id="pdfInput" accept=".pdf" style="display:none;">
                         </div>
                     </div>
-
                     <div class="col-md-6 mb-4">
                         <label class="form-label">Replace Cover Image (Optional)</label>
                         <div class="file-upload-area" onclick="document.getElementById('imageInput').click()">
@@ -226,8 +151,8 @@ $update_status = '';
                         </div>
                     </div>
                 </div>
-<button type="button" onclick="confirmUpdate()" name="update" class="btn btn-primary">
-                
+
+                <button type="button" onclick="confirmUpdate()" class="btn btn-primary">
                     <i class="fas fa-save"></i> Update Book
                 </button>
             </form>
@@ -235,7 +160,6 @@ $update_status = '';
     </div>
 
     <script>
-        // Confirm before update
         function confirmUpdate() {
             Swal.fire({
                 title: 'Confirm Update?',
@@ -252,11 +176,10 @@ $update_status = '';
             });
         }
 
-        // Success / Error Message
         <?php if($update_status == 'success'): ?>
         Swal.fire({
             icon: 'success',
-            title: 'ðŸŽ‰ Updated Successfully!',
+            title: 'Updated Successfully!',
             text: 'Book information has been updated.',
             timer: 4000,
             timerProgressBar: true,
